@@ -49,7 +49,7 @@
 	
 	<p class="subText-sidebar">구독</p>
 	<%
-	for(int i = 0; i < 10; i++){
+	for(int i = 0; i < 9; i++){
 	%>
 	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("url주소") ? select_color:"white")%>
 	border-radius: 10px; margin-bottom: 5px; margin-right: 7px">
