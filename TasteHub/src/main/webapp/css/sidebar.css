@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+.sidebar-main{
+	display: flex;
+	flex-direction: column;
+	margin-left: 30px;
+	margin-right: 20px;
+	margin-top: 25px;
+	padding-bottom: 25px;
+	overflow-y: scroll;
+	box-sizing: border-box;
+	min-width: 240px;
+	height: calc(100vh - 88px);
+	*{
+		text-decoration: none;
+		color: black;	
+	}
+	.btn-sidebar{
+		display: flex;
+		width: 200px;
+		height: 42px;
+		padding-left: 10px;
+		border-radius: 10px;
+		align-items: center;
+	}
+	.txt-sidebar{
+		margin-left: 15px;
+		font-size: 14px;
+		font-weight: 500;
+	}
+	.btn-sidebar:hover{
+		background-color: #FFAC8850;
+	}
+	.subText-sidebar{
+		margin-left: 5px;
+		margin-top: 10px;
+		font-size: 17px;
+		font-weight: 530;
+	}
+	.subImg-btn{
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+	}
+}
