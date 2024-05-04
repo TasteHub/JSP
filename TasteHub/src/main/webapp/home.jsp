@@ -13,10 +13,10 @@ font-family: "Roboto", "Arial", sans-serif;
 </style>
 </head>
 <body style="margin: 0; overflow-y: hidden">
-	<%@ include file="header.jsp" %>
+	<%@ include file="./common/header.jsp" %>
 	<div style="display: flex;">
-		<%@ include file="sidebar.jsp" %>
-		<%@ include file="contents_home.jsp" %>
+		<%@ include file="./common/sidebar.jsp" %>
+		<%@ include file="./home/contents_home.jsp" %>
 	</div>
 </body>
 </html>
