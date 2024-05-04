@@ -6,7 +6,7 @@
 	String userimgSrc = "img/Header/profileImg.jpg";
 %>
 <div class="header-main">
-	<a class="homeBtn-header" href="index.jsp">
+	<a class="homeBtn-header" href="home.jsp">
 		<img alt="" src="img/Header/btnLogo.png" width="40px" height="" style="margin-right: 10px">
 		TasteHub
 	</a>
