@@ -13,7 +13,7 @@
 	length = st.length;
 %>    
 <div class="sidebar-main">
-	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("index.jsp") ? select_color:"white")%>;">
+	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("home.jsp") ? select_color:"white")%>;">
 		<a class="btn-sidebar" href="home.jsp">
 			<img alt="" src="img/Sidebar/btnHome.png" width="25px" height="25px">
 			<p class="txt-sidebar">홈</p>

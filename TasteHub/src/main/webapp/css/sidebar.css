@@ -37,11 +37,10 @@
 		background-color: #FFAC8850;
 	}
 	.hr-sidebar{
-		border: none;
 		width: 200px;
-		height: 1px;
-		
-		background: #FFAC88;
+		border-color: #FFAC8880;
+		border-style: solid;
+		margin-left: 10px;
 	}
 	.subText-sidebar{
 		margin-left: 10px;
