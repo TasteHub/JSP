@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<link href="css/sidebar.css?after" rel="stylesheet" type="text/css">    
+<link href="css/common/sidebar.css?after" rel="stylesheet" type="text/css">    
 <%!
 	private String url, page;
 	private String[] st;
@@ -19,8 +19,9 @@
 			<p class="txt-sidebar">홈</p>
 		</a>
 	</div>
-	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("url주소") ? select_color:"white")%>">
-		<a class="btn-sidebar" href="subscribe.jsp">
+	<div class="div-sidebar" 
+	style="background-color: <%=(st[length-1].equals("subscribe_com.jsp")||st[length-1].equals("subscribe_list.jsp") ? select_color:"white")%>">
+		<a class="btn-sidebar" href="subscribe_com.jsp">
 			<img alt="" src="img/Sidebar/btnSubList.png" width="27px" height="27px">
 			<p class="txt-sidebar">구독</p>
 		</a>

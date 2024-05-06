@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<link href="css/header.css?after" rel="stylesheet" type="text/css">
+<link href="css/common/header.css?after" rel="stylesheet" type="text/css">
 
 <%!
 	String userimgSrc = "img/Header/profileImg.jpg";
