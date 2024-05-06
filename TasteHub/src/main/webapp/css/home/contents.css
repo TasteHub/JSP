@@ -36,9 +36,14 @@
 					margin-bottom: 5px;
 				}
 				.user-detail{
+					width: fit-content;
 					color: gray;
 					font-size: 12px;
 					font-weight: 500;
+				}
+				.user-detail:hover{
+					color: black;
+					cursor: pointer;
 				}
 				.etc-detail{
 					color: gray;

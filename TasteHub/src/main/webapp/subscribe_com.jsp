@@ -9,6 +9,8 @@
 <style type="text/css">
 *{
 font-family: "Roboto", "Arial", sans-serif;
+text-decoration: none;
+color: black;
 }
 </style>
 
