@@ -34,8 +34,8 @@
 			<p class="txt-sidebar">내 채널</p>
 		</a>
 	</div>
-	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("url주소") ? select_color:"white")%>">
-		<a class="btn-sidebar" href="index.jsp">
+	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("history.jsp") ? select_color:"white")%>">
+		<a class="btn-sidebar" href="history.jsp">
 			<img alt="" src="img/Sidebar/btnVisit.png" width="27px" height="27px">
 			<p class="txt-sidebar">방문기록</p>
 		</a>

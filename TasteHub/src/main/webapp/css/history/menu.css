@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.menu-history{
+	width: 400px;
+	position: fixed;
+	right: 0;
+	.content-menu{
+		margin-top: 200px;
+		margin-left: 50px;
+	}
+}
