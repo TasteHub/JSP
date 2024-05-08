@@ -5,7 +5,50 @@
 	position: fixed;
 	right: 0;
 	.content-menu{
-		margin-top: 200px;
-		margin-left: 50px;
+		margin: 130px 0px 0px 30px;
+		.searchBar-menu{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 250px;
+			height: 50px;
+			margin-bottom: 20px;
+			background-color: #FFDC99;
+			border-radius: 10px;
+			.search-searchBar{
+				display: flex;
+				align-items: center;
+				width: 220px;
+				height: 30px;
+				.text-searchBar{
+					margin-left: 5px;
+					width: 100%;
+					outline: none;
+					border: none;
+					background-color: transparent;
+				}
+				.text-searchBar::placeholder{
+					color: black;
+				}
+			}
+		}
+		.btn-menu{
+			display: flex;
+			align-items: center;
+			width: fit-content;
+			height: 45px;
+			padding-left: 10px;
+			margin-left: 5px;
+			margin-bottom: 10px;
+			.text-btn{
+				margin-left: 10px;
+				margin-right: 15px;
+				font-size: 15px;
+			}
+		}
+		.btn-menu:hover{
+			background-color: #CCCCCC;
+			border-radius: 20px;
+		}
 	}
 }
