@@ -11,11 +11,11 @@
 		</div>
 		<div class="btn-menu">
 			<img alt="" src="img/History/btnDel.png" width="20px" height="">
-			<p class="text-btn">시청 기록 지우기</p>
+			<p class="text-btn">방문 기록 지우기</p>
 		</div>
 		<div class="btn-menu">
 			<img alt="" src="img/History/btnPause.png" width="22px" height="">
-			<p class="text-btn">시청 기록 일시정지</p>
+			<p class="text-btn">방문 기록 일시정지</p>
 		</div>
 	</div>
 </div>

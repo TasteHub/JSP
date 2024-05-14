@@ -22,7 +22,6 @@ color: black;
 		<%@ include file="./tag_common/sidebar.jsp" %>
 		<%@ include file="./tag_history/contents.jsp" %>
 		<%@ include file="./tag_history/menu.jsp" %>
-		
 	</div>
 </body>
 </html>
