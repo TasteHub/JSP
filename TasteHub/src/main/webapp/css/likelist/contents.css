@@ -68,7 +68,8 @@
 					}
 				}
 				.exp-text{
-					min-width: 80%;
+					max-width: 90%;
+					min-width: 280px;
 					margin-top: 5px;
 					color: gray;
 					font-size: 12px;
