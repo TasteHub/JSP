@@ -40,8 +40,8 @@
 			<p class="txt-sidebar">방문 기록</p>
 		</a>
 	</div>
-	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("url주소") ? select_color:"white")%>">
-		<a class="btn-sidebar" href="index.jsp">
+	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("likelist.jsp") ? select_color:"white")%>">
+		<a class="btn-sidebar" href="likelist.jsp">
 			<img alt="" src="img/Sidebar/btnLikelist.png" width="27px" height="27px">
 			<p class="txt-sidebar">좋아요한 동영상</p>
 		</a>
