@@ -10,12 +10,10 @@
 		<img alt="" src="img/Header/btnLogo.png" width="40px" height="" style="margin-right: 10px">
 		TasteHub
 	</a>
-	<div class="searchBar-header">
-		<input class="text-searchBar" placeholder="검색">
-		<div class="btnArea-searchBar">
-			<img alt="" src="img/Header/btnSearch.png" width="20px" height="">
-		</div>
-	</div>
+	<form class="searchBar-header" name="searchbar" action="./search.jsp" method="get">
+		<input type="text" class="text-searchBar" name="searchTxt" placeholder="검색">
+		<input type="submit" class="btnArea-searchBar" style="background-image: url('img/Header/btnSearch.png');">
+	</form>
 	<div class="btnArea-header">
 		<img alt="" src="img/Header/btnVideo.png" width="30px" height="">
 		<img alt="" src="img/Header/btnAlarm.png" width="26px" height="">
