@@ -11,7 +11,7 @@
 		if(title.length()>20)
 			title = title.substring(0,20) + "...";
 %>
-	<a class="content-contents" href="#">
+	<a class="content-contents" href="videoDetailsPage.jsp">
 		<div class="video-contents" style="background-image: url(''); background-color: gray;" ></div>
 		<div class="detail-contents">
 			<div class="userimg-detail" style="background-image: url(''); background-color: gray;">
