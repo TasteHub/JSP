@@ -15,7 +15,7 @@
 </head>
 <body>
 	<img alt="" src="img/Login/background.png" width="50%" height="100%"/>
-	<h1>Welcome<br>Back!</h1>
+	<h1>Welcome<br>Back!!</h1>
 
  	<div class="i-login">
 	    <a href="home.jsp" class="homeBtn-login">
