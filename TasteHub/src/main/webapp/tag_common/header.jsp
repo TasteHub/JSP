@@ -15,8 +15,9 @@
 		<input type="submit" class="btnArea-searchBar" style="background-image: url('img/Header/btnSearch.png');">
 	</form>
 	<div class="btnArea-header">
-		<img alt="" src="img/Header/btnVideo.png" width="30px" height="">
-		<img alt="" src="img/Header/btnAlarm.png" width="26px" height="">
+		<a class="videoBtn-btnArea" href="./studio.jsp">
+			<img alt="" src="img/Header/btnVideo.png" width="30px" height="">
+		</a>
 		<img class="profile-btnArea" alt="" src=<%= userimgSrc %>>
 	</div>
 </div>

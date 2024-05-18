@@ -60,6 +60,10 @@
 			border-radius: 20px;
 			object-fit: cover;
 		}
+		.videoBtn-btnArea{
+			display: flex;
+			align-items: center;
+		}
 		*{
 			margin-left: 15px;
 		}
