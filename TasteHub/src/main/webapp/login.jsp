@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>TasteHub - Login</title>>
+<title>TasteHub - Login</title>
 <style>
 	* {
 	    font-family: "Roboto", "Arial", sans-serif;
