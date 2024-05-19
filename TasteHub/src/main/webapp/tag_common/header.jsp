@@ -19,7 +19,7 @@
 	<div class="btnArea-header">
 		<img alt="" src="img/Header/btnVideo.png" width="30px" height="">
 		<img alt="" src="img/Header/btnAlarm.png" width="26px" height="">
-		<a href="login.jsp">
+		<a href="logins.jsp">
     		<img class="profile-btnArea" alt="" src="<%= userimgSrc %>" />
 		</a>
 	</div>
