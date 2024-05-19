@@ -3,18 +3,19 @@
 .contents-main{
 	overflow-y: scroll;
 	height: calc(100vh - 100px);
-	min-width: calc(100% - 280px);
+	min-width: calc(100% - 310px);
 	margin-top: 25px;
 	padding-top: 15px;
 	margin-left: 30px;
-	display: flex;
-	flex-wrap: wrap;
+	display: inline-block;
+	align-content: flex-start;
+
 	.content-contents_list{
 		padding: 10px 0px;
 		.video-content{
 			display: flex;
 			flex-direction: row;
-
+			padding-bottom: 20px;
 			.thumbnail-video{
 				width: 356px;
 				height: 200px;
