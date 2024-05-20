@@ -16,8 +16,8 @@
         }
         
         .video-contents {
-            width: 1200px;
-            height: 576px;
+            width: 1060px;
+            height: 500px;
             border-radius: 15px;
             background-color: gray;
         }
@@ -251,4 +251,3 @@
     </script>
 </body>
 </html>
-
