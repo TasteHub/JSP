@@ -26,8 +26,7 @@
 	}
 	.content-contents_list{
 		position: relative;
-		padding-left: 30px;
-		margin: 10px 0px 10px 30px;
+		margin: 10px 0px;
 		width: calc(100% - 440px);
 		min-width: 500px;
 		
@@ -46,12 +45,14 @@
 				*{
 					margin: 2px;
 				}
+				width: fit-content;
 				.title-video{
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
 					margin: 0;
 					.title-text{
+						width: 350px;
 						min-width: 80%;
 						font-size: 18px;
 						font-weight: 550;

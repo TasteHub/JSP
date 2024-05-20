@@ -29,7 +29,7 @@
 		if(title.length()>20)
 			title = title.substring(0,20) + "...";
 	%>
-		<a class="content-contents_list" href="#">
+		<div class="content-contents_list">
 			<div class="video-content">
 				<div class="thumbnail-video" style="background-image: url(''); background-color: gray;"></div>
 				<div class="text-video">
@@ -46,7 +46,7 @@
 					<p class="exp-text"><%= exp %> 
 				</div>
 			</div>
-		</a>
+		</div>
 	<%	
 		}
 	%>	
