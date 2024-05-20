@@ -16,7 +16,7 @@ for(int i = 0; i<10; i++){
 	if(title.length()>30)
 		title = title.substring(0,30) + "...";
 %>
-	<a class="content-contents_list" href="#">
+	<a class="content-contents_list" href="videoDetailsPage.jsp">
 		<div class="user-content">
 			<div class="userimg-user" style="background-image: url(''); background-color: gray;">
 			</div>

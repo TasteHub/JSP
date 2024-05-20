@@ -28,8 +28,8 @@
 	</div>
 	<hr class="hr-sidebar">
 	
-	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("url주소") ? select_color:"white")%>">
-		<a class="btn-sidebar" href="index.jsp">
+	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("myPage.jsp") ? select_color:"white")%>">
+		<a class="btn-sidebar" href="myPage.jsp">
 			<img alt="" src="img/Sidebar/btnMypage.png" width="27px" height="27px">
 			<p class="txt-sidebar">내 채널</p>
 		</a>
@@ -54,7 +54,7 @@
 	%>
 	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("url주소") ? select_color:"white")%>
 	border-radius: 10px; margin-bottom: 5px; margin-right: 7px">
-		<a class="btn-sidebar" href="index.jsp">
+		<a class="btn-sidebar" href="subscribe_page.jsp">
 			<div class="subImg-btn" style="background-image: url(''); background-color: gray;"></div>
 			<p class="txt-sidebar">채널 <%= i+1 %></p>
 		</a>
@@ -62,4 +62,8 @@
 	<%
 	}
 	%>
+	<a class="btn-sidebar" href="subscribe_all.jsp">
+		<img alt="" src="img/Subscribe/btnList.png" width="27px" height="27px">
+		<p class="txt-sidebar">모든 구독</p>
+	</a>
 </div>
