@@ -11,7 +11,6 @@
 	align-content: flex-start;
 
 	.content-contents_list{
-		padding: 10px 0px;
 		.video-content{
 			display: flex;
 			flex-direction: row;

@@ -28,17 +28,17 @@
 			}
 			.text-video{
 				*{
-					margin: 2px;
+					margin: 0px;
 				}
 				.title-video{
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-					margin: 0;
 					.title-text{
 						min-width: 80%;
 						font-size: 18px;
 						font-weight: 550;
+						margin: 4px 0px;
 					}
 					.del-btn{
 						display: flex;

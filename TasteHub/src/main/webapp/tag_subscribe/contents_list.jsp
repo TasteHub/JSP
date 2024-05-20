@@ -16,23 +16,29 @@ for(int i = 0; i<10; i++){
 	if(title.length()>30)
 		title = title.substring(0,30) + "...";
 %>
-	<a class="content-contents_list" href="videoDetailsPage.jsp">
-		<div class="user-content">
+	<div class="content-contents_list">
+		<a class="user-content" href="subscribe_page.jsp">
 			<div class="userimg-user" style="background-image: url(''); background-color: gray;">
 			</div>
 			<p class="name-user">닉네임</p>
-		</div>
+		</a>
 		<div class="video-content">
-			<div class="thumbnail-video" style="background-image: url(''); background-color: gray;"></div>
+			<a href="videoDetailsPage.jsp">
+				<div class="thumbnail-video" style="background-image: url(''); background-color: gray;"></div>
+			</a>
 			<div class="text-video">
-				<p class="title-text"><%= title %></p>
+				<a href="videoDetailsPage.jsp">
+					<p class="title-text"><%= title %></p>
+				</a>
 				<div class="detail-text">
-					<p class="user-text">닉네임</p>
+					<a href="subscribe_page.jsp">
+						<p class="user-text">닉네임</p>
+					</a>
 					<p class="etc-text"> · 000회 · 2개월 전</p>
 				</div>
 				<p class="exp-text"><%= exp %> 
 			</div>
 		</div>
-	</a>
+	</div>
 <%}%>
 </div>

@@ -17,24 +17,30 @@
 		if(title.length()>30)
 			title = title.substring(0,30) + "...";
 	%>
-		<a class="content-contents_list" href="#">
+		<div class="content-contents_list">
 			<div class="video-content">
-				<div class="thumbnail-video" style="background-image: url(''); background-color: gray;"></div>
+				<a href="videoDetailsPage.jsp">
+					<div class="thumbnail-video" style="background-image: url(''); background-color: gray;"></div>
+				</a>
 				<div class="text-video">
 					<div class="title-video">
-						<p class="title-text"><%= title %></p>
+						<a href="videoDetailsPage.jsp">
+							<p class="title-text"><%= title %></p>
+						</a>
 						<div class="del-btn">
 							<img alt="" src="img/History/btnDeny.png" width="15px" height="">
 						</div>
 					</div>
 					<div class="detail-text">
-						<p class="user-text">닉네임</p>
+						<a href="subscribe_page.jsp">
+							<p class="user-text">닉네임</p>
+						</a>
 						<p class="etc-text"> · 000회 · 2개월 전</p>
 					</div>
 					<p class="exp-text"><%= exp %> 
 				</div>
 			</div>
-		</a>
+		</div>
 	<%	
 		}
 	%>	

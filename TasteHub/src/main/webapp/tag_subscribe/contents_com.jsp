@@ -13,18 +13,25 @@
 		if(title.length()>20)
 			title = title.substring(0,20) + "...";
 %>
-	<a class="content-contents" href="#">
-		<div class="video-contents" style="background-image: url(''); background-color: gray;"></div>
+	<div class="content-contents">
+		<a href="videoDetailsPage.jsp">
+			<div class="video-contents" style="background-image: url(''); background-color: gray;"></div>
+		</a>
 		<div class="detail-contents">
-			<div class="userimg-detail" style="background-image: url(''); background-color: gray;">
-			</div>
+			<a href="subscribe_page.jsp">
+				<div class="userimg-detail" style="background-image: url(''); background-color: gray;"></div>
+			</a>
 			<div class="text-detail">
-				<p class="title-detail"><%= title %></p>
-				<p class="user-detail">닉네임</p>
+				<a href="videoDetailsPage.jsp">
+					<p class="title-detail"><%= title %></p>
+				</a>
+				<a href="subscribe_page.jsp">
+					<p class="user-detail">닉네임</p>
+				</a>
 				<p class="etc-detail">000회 · 2개월 전</p>
 			</div>
 		</div>
-	</a>
+	</div>
 <%
 	}
 %>
