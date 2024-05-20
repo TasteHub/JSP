@@ -47,10 +47,8 @@
         }
     </style>
 </head>
-<body>
-    <div>
-        <%@ include file="./tag_common/header.jsp" %>
-    </div>
+<body style="margin: 0;">
+	<%@ include file="./tag_common/header.jsp" %>
     <div style="display: flex;">
         <%@ include file="./tag_common/sidebar.jsp" %>
 	    <div class="profile-container">
@@ -63,7 +61,7 @@
     </div>
     <div class="myPage-hr"></div>
     <div class="myPage-first">
-    	<img alt="" src="img/MyPage/myPageImage.jpg" width="130px" height=""">
+    	<img alt="" src="img/MyPage/myPageImage.jpg" width="130px" height="">
 		<p>원하는 기기에서 콘텐츠를 만드세요<br>
 		<p>집에서는 물론 이동 중에도 녹화하고 업로드할 수<br>있습니다. 공개 상태로 설정한 모든 콘텐츠가 여기<br>에 표시됩니다.<br><br>
 		<input type="button" class="create-btn" value="만들기">

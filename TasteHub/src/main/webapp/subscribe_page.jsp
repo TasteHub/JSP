@@ -107,10 +107,8 @@
 		}
     </style>           
 </head>
-<body>
-    <div>
-        <%@ include file="./tag_common/header.jsp" %>
-    </div>
+<body style="margin: 0;">
+    <%@ include file="./tag_common/header.jsp" %>
     <div style="display: flex;">
         <%@ include file="./tag_common/sidebar.jsp" %>
         <div class="content-wrapper">
@@ -133,7 +131,7 @@
         	<%@ include file="./tag_home/contents.jsp" %>
         	</div>
         </div>
-
+	</div>
     <script>
         document.getElementById('subscribeButton').addEventListener('click', function() {
             var button = this;
