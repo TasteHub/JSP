@@ -2,11 +2,15 @@
     pageEncoding="utf-8"%>
 <%
     String title = "영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 ";  
+    String viewMore = "더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 "; 
     String userimgSrc = "img/Header/profileImg.jpg";
+    String bellimgSrc = "img/VideoDetail/bell_icon.png";
+    String likeBefimgSrc = "img/VideoDetail/like_bef.png";
+    String likeAftimgSrc = "img/VideoDetail/like_aft.png";
+    String closeimgSrc = "img/VideoDetail/close.png";
 %>
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>TasteHub - VideoDetailsPage</title>
     <style>
         * {
@@ -59,44 +63,77 @@
             flex-direction: column;
             margin-left: 10px;
             margin-top: 30px;
+            width: 85%;
         }
         
+        .button-wrapper {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .subs-btn, .like-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 25px;
+            font-size: 13px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            transition: width 0.3s;
+            margin-right: 20px;
+        }
+
         .subs-btn {
             width: 65px;
-            height: 25px;
-            font-size: 15px;
             background-color: black;
-            border-radius: 10%;
             color: white;
-            border: none;
-            margin-right: 10px;
-            margin-top: 10px;
-            cursor: pointer;
         }
         
         .subs-btn-clicked {
-            background-color: #FFAC53;
+            background-color: #e9ecef;
             color: black;
-            width: 80px;
+            width: 100px;
         }
         
         .like-btn {
-            width: 80px;
-            height: 25px;
-            font-size: 15px;
-            background-color: #FFAC8880;
-            border-radius: 10%;
+            width: 100px;
+            background-color: #e9ecef;
             color: black;
-            border: none;
-            cursor: pointer;
         }
         
         .like-btn-clicked {
-            background-color: #FFAC53;
+            background-color: #e9ecef;
+            width: 100px;
+        }
+        
+        .view-more-section {
+            margin-top: 20px;
+            max-width: 84%;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .view-more-content {
+            font-size: 15px;
+        }
+        
+        .view-more-button {
+            display: inline-block;
+            font-size: 13px;
+            background-color: #e9ecef;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            color: #007bff;
+            margin-top: 5px;
         }
         
         .comment-section {
-            margin-top: 40px;
+            max-width: 90%;
+            margin-top: 30px;
         }
 
         .comment-title {
@@ -128,25 +165,25 @@
         }
 
         .comment-button {
-            padding: 10px 20px;
-            font-size: 15px;
-            background-color: #FFAC53;
-            border-radius: 5px;
-            color: white;
+            font-size: 13px;
+            background-color: white;
+            font-weight: bold;
             border: none;
             cursor: pointer;
         }
 
         .comments-container {
-            width: 85%;
             margin: 0 auto;
             margin-top: 20px;
         }
 
         .comment {
             display: flex;
+    		position: relative;
+            display: relative;
             align-items: flex-start;
             margin-top: 20px;
+            margin-bottom: 10px;
         }
 
         .comment .profile {
@@ -154,19 +191,31 @@
         }
 
         .comment-content {
-            background-color: #FFFAF0;
             padding: 10px 15px;
-            border-radius: 5px;
-            width: 100%;
+            position: relative;
+            flex: 1; 
         }
 
         .comment-content p {
             margin: 0;
         }
+
+		.close-button {
+		    position: absolute;
+		    top: 0;
+		    right: 30;
+		    width: 20px;
+		    height: 20px;
+		    background: url('<%= closeimgSrc %>') no-repeat center center;
+		    background-size: contain;
+		    border: none;
+		    cursor: pointer;
+		    margin-left: auto;
+		}
     </style>           
 </head>
 <body style="margin: 0;">
-	<%@ include file="./tag_common/header.jsp" %>
+    <%@ include file="./tag_common/header.jsp" %>
     <div style="display: flex;">
         <%@ include file="./tag_common/sidebar.jsp" %>
         <div class="content-wrapper">
@@ -181,7 +230,17 @@
             </div>
             <div class="button-wrapper">
                 <button id="subscribeButton" class="subs-btn">구독</button>
-                <button id="likeButton" class="like-btn"><i class="fas fa-thumbs-up"></i> 좋아요</button>
+                <button id="likeButton" class="like-btn">
+                    <img src="<%= likeBefimgSrc %>" alt="like icon" style="width:20px; height:20px; margin-right:5px;">좋아요
+                </button>
+            </div>
+            <div class="view-more-section">
+                <div id="viewMoreContent" class="view-more-content">
+                    <%= viewMore.length() > 80 ? viewMore.substring(0, 80) + "..." : viewMore %>
+                </div>
+                <% if (viewMore.length() > 80) { %>
+                    <button id="viewMoreButton" class="view-more-button">더보기</button>
+                <% } %>
             </div>
             <div class="comment-section">
                 <p class="comment-title">댓글</p>
@@ -203,7 +262,7 @@
                 button.innerHTML = '구독';
             } else {
                 button.classList.add('subs-btn-clicked');
-                button.innerHTML = '구독중';
+                button.innerHTML = '<img src="<%= bellimgSrc %>" alt="bell icon" style="width:25px; height:25px; margin-right:5px;">구독중';
             }
         });
         
@@ -211,8 +270,10 @@
             var button = this;
             if (button.classList.contains('like-btn-clicked')) {
                 button.classList.remove('like-btn-clicked');
+                button.innerHTML = '<img src="<%= likeBefimgSrc %>" alt="like icon" style="width:20px; height:20px; margin-right:5px;">좋아요';
             } else {
                 button.classList.add('like-btn-clicked');
+                button.innerHTML = '<img src="<%= likeAftimgSrc %>" alt="like icon" style="width:20px; height:20px; margin-right:5px;">좋아요';
             }
         });
 
@@ -239,11 +300,28 @@
                 commentContent.appendChild(commentParagraph);
                 commentDiv.appendChild(commentContent);
 
+                var closeButton = document.createElement('button');
+                closeButton.classList.add('close-button');
+                closeButton.addEventListener('click', function() {
+                    commentsContainer.removeChild(commentDiv);
+                });
+                commentContent.appendChild(closeButton);
+
                 commentsContainer.prepend(commentDiv);
 
                 commentInput.value = '';
+            } 
+        });
+
+        document.getElementById('viewMoreButton').addEventListener('click', function() {
+            var viewMoreContent = document.getElementById('viewMoreContent');
+            var viewMoreButton = document.getElementById('viewMoreButton');
+            if (viewMoreButton.innerText === '더보기') {
+                viewMoreContent.innerText = '<%= viewMore %>';
+                viewMoreButton.innerText = '접기';
             } else {
-                alert('댓글을 입력해주세요.');
+                viewMoreContent.innerText = '<%= viewMore.length() > 80 ? viewMore.substring(0, 80) + "..." : viewMore %>';
+                viewMoreButton.innerText = '더보기';
             }
         });
     </script>

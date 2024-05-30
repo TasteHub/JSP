@@ -17,6 +17,7 @@
         }
         .profile-container {
             display: flex;
+            position: relative;
         }
         .profile-image {
             width: 180px;
@@ -53,6 +54,14 @@
             border-radius: 15%;
             cursor: pointer;
         }
+        .contents-main {
+            position: relative;
+            z-index: 0;
+        }
+        .contents-container {
+        	width: 80%;
+        	margin-left: 280px;
+        }
     </style>
 </head>
 <body style="margin: 0;">
@@ -72,13 +81,11 @@
                 <p><%= userMail %></p>
             </div>
         </div>
+        
     </div>
     <div class="myPage-hr"></div>
-    <div class="myPage-first">
-        <img alt="" src="img/MyPage/myPageImage.jpg" width="130px" height="">
-        <p>원하는 기기에서 콘텐츠를 만드세요<br>
-        <p>집에서는 물론 이동 중에도 녹화하고 업로드할 수<br>있습니다. 공개 상태로 설정한 모든 콘텐츠가 여기<br>에 표시됩니다.<br><br>
-        <input type="button" class="create-btn" value="만들기" id="create-button">
+    <div class="contents-container">
+    	<%@ include file="./tag_myPage/contents.jsp" %>
     </div>
 
     <script>
@@ -98,11 +105,6 @@
                 document.getElementById('user-name').textContent = newName;
             }
         });
-
-        document.getElementById('create-button').addEventListener('click', function() {
-            window.location.href = "studio.jsp";
-        });
     </script>
 </body>
 </html>
-
