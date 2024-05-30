@@ -7,7 +7,7 @@
 
 <div class="contents-main">
 	<h2 class="title-contents">동영상 업로드</h2>
-	<form action="" method="post">
+	<form action="process/studio_process.jsp" method="post" enctype="multipart/form-data">
 		<div class="upload-contents">
 			<div class="text-upload">
 				<h3>제목</h3>
