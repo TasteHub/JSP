@@ -23,7 +23,7 @@
 	        <span>TasteHub</span>
 	    </a>
 	    <p class="word-login">Login
-
+		<form action="process/loginHandler.jsp" method="post">
         <div class="input-login">
             <label for="email" class="input-word">이메일 </label>
             <input class="input" type="email" id="email" name="email" required><br>
@@ -31,8 +31,8 @@
             <label for="password" class="input-word">비밀번호</label>
             <input class="input" type="password" id="password" name="password" required><br>
         </div>
-        <input type="button" class="login-btn" value="로그인">
-    	
+        <input type="submit" class="login-btn" value="로그인">
+    	</form>
     	<div class="go-join">
 		    <p>아직 계정이 없으신가요?
 		    <a href="join.jsp" class="go-join-link">
