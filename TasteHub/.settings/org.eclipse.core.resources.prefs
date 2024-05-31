@@ -1,3 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/channel.jsp=UTF-8
+encoding//src/main/webapp/process/connect_DB.jsp=UTF-8
+encoding//src/main/webapp/process/studio_process.jsp=UTF-8
 encoding//src/main/webapp/videoDetailsPage.jsp=UTF-8
