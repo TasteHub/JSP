@@ -18,11 +18,15 @@
             text-decoration: none;
             color: black;
         }
+        .body {
+        	
+        }
          .video-contents {
             width: 1060px;
             height: 500px;
             border-radius: 15px;
             background-color: gray;
+            min-height: 500px;
         }
         
         .detail-contents {
@@ -57,12 +61,23 @@
             color: gray;
         }
         
+        html, body {
+		    height: 100%;
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden; 
+		}
+        
         .content-wrapper {
             display: flex;
+            position: relative;
             flex-direction: column;
             margin-left: 10px;
             margin-top: 30px;
             width: 85%;
+			overflow-y: scroll;
+			box-sizing: border-box;
+			height: calc(100vh - 80px);
         }
         
         .button-wrapper {
