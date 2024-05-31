@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+.contents-main{
+	overflow-y: scroll;
+	height: calc(100vh - 80px);
+	min-width: calc(100% - 280px);
+	margin-top: 25px;
+	display: flex;
+	flex-wrap: wrap;
+	align-content : flex-start;
+	.content-contents{
+		margin-left: 20px;
+		.video-contents{
+			width: 350px;
+			height: 206px;
+			border-radius: 15px;
+		}
+		.detail-contents{
+			width: 350px;
+			height: 100px;
+			display: flex;
+			.userimg-detail{
+				width: 36px;
+				height: 36px;
+				margin-top: 12px;
+				margin-right: 12px;
+				border-radius: 18px;
+			}
+			.text-detail{
+				width: 308px;
+				margin-top: 10px;
+				*{
+					margin:0px;
+				}
+				.title-detail{
+					font-size: 15px;
+					font-weight: 700;
+					margin-bottom: 5px;
+				}
+				.user-detail{
+					width: fit-content;
+					color: gray;
+					font-size: 12px;
+					font-weight: 500;
+				}
+				.user-detail:hover{
+					color: black;
+					cursor: pointer;
+				}
+				.etc-detail{
+					color: gray;
+					font-size: 12px;
+					font-weight: 500;
+				}
+			}
+		}
+	}
+}
