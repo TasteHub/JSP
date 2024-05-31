@@ -22,7 +22,7 @@
         	
         }
          .video-contents {
-            width: 1060px;
+            width: 87%;
             height: 500px;
             border-radius: 15px;
             background-color: gray;
