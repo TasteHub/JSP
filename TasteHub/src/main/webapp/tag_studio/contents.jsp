@@ -11,9 +11,9 @@
 		<div class="upload-contents">
 			<div class="text-upload">
 				<h3>제목</h3>
-				<input type="text" class="title-input" placeholder="영상 제목" required> 
+				<input name="title" type="text" class="title-input" placeholder="영상 제목" required> 
 				<h3>내용</h3>
-				<textarea class="exp-input" placeholder="영상 설명" required></textarea>
+				<textarea name="detail" class="exp-input" placeholder="영상 설명" required></textarea>
 			</div>
 			<div class="video-upload">
 				<h3>비디오 선택 (mp4, mkv, avi)</h3>
