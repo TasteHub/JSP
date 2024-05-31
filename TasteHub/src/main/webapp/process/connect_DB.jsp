@@ -24,6 +24,8 @@
 		out.println("연결 실패");
 		out.println(e.getMessage());
 	}
+	
+	conn.close();
 	%>
 </body>
 </html>
