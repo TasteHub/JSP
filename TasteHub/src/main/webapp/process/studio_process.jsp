@@ -19,8 +19,8 @@
 <%	
 	Region region = Region.AP_NORTHEAST_2;
 	//git에 키값이 안올라가서 임의로 부여(사용시 변경해야함)
-	AwsBasicCredentials awsCreds = AwsBasicCredentials.create("",
-			"");
+	AwsBasicCredentials awsCreds = AwsBasicCredentials.create("accessKey",
+			"privatekey");
 	String bucketname = "bucket-tastehub";
 	S3Client client = S3Client.builder().region(region)
             .credentialsProvider(StaticCredentialsProvider.create(awsCreds))
@@ -72,5 +72,6 @@
 			pstmt.close();
 		if(conn!=null)
 			conn.close();
+		response.sendRedirect("../myPage.jsp");
 	}
 %>
