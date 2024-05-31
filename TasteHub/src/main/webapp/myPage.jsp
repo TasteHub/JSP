@@ -5,6 +5,7 @@
     String editimgSrc = "img/MyPage/editImg.png";
     String userName = "이름";  
     String userMail = "aaa@bbb.ccc"; 
+    String introduce = "자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개";
 %>
 <html>
 <head>
@@ -53,6 +54,20 @@
             border-radius: 15%;
             cursor: pointer;
         }
+        textarea {
+		    border-radius: 10px; 
+		    border-color: #FFAC53;
+		}
+		.save-introduce {
+			margin-top: 10px;
+			background-color: #FFAC53;
+			border-radius: 20px;
+			color: white;
+			border: none;
+			width: 60px;
+			height: 25px;
+			cursor: pointer;
+		}
     </style>
 </head>
 <body style="margin: 0;">
@@ -70,6 +85,9 @@
                     <img id="edit-image" src="<%= editimgSrc %>" alt="Edit" style="width: 20px; height: 20px; margin-left: 10px; cursor: pointer;">
                 </p>
                 <p><%= userMail %></p>
+                <textarea id="introduce-text" rows="4" cols="50" maxlength="100"><%= introduce %></textarea>
+                <br>
+                <button class="save-introduce">저장</button>
             </div>
         </div>
     </div>
@@ -93,10 +111,16 @@
         });
 
         document.getElementById('edit-image').addEventListener('click', function() {
-            var newName = prompt('새로운 이름을 입력하세요:', '<%= userName %>');
+            var newName = prompt('새로운 이름을 입력하세요', '<%= userName %>');
             if (newName !== null) {
                 document.getElementById('user-name').textContent = newName;
             }
+        });
+
+        document.getElementById('save-introduce').addEventListener('click', function() {
+            var introduceText = document.getElementById('introduce-text').value;
+            introduceText = introduceText.substring(0, 100);
+            alert("Introduction saved: " + introduceText);
         });
 
         document.getElementById('create-button').addEventListener('click', function() {
@@ -105,4 +129,3 @@
     </script>
 </body>
 </html>
-

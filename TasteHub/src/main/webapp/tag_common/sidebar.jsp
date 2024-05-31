@@ -54,7 +54,7 @@
 	%>
 	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("url주소") ? select_color:"white")%>
 	border-radius: 10px; margin-bottom: 5px; margin-right: 7px">
-		<a class="btn-sidebar" href="subscribe_page.jsp">
+		<a class="btn-sidebar" href="channel.jsp">
 			<div class="subImg-btn" style="background-image: url(''); background-color: gray;"></div>
 			<p class="txt-sidebar">채널 <%= i+1 %></p>
 		</a>

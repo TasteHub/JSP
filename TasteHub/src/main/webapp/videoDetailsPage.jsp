@@ -18,8 +18,7 @@
             text-decoration: none;
             color: black;
         }
-        
-        .video-contents {
+         .video-contents {
             width: 1060px;
             height: 500px;
             border-radius: 15px;

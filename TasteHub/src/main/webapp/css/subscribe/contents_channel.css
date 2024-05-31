@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+.contents-main {
+    overflow-y: scroll;
+    height: calc(100vh - 80px);
+    min-width: calc(90% - 310px);
+    margin-top: 25px;
+    margin-left: 30px;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.content-contents_list {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #FFAC8880;
+    padding: 10px 0;
+    width: 85%;
+}
+
+.channel-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-right: 20px;
+}
+
+.text-channel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.name-channel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.user-name {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.etc-text {
+    color: gray;
+    font-size: 14px;
+    margin: 5px 0 0;
+}
+
+.intro-text {
+    color: gray;
+    font-size: 12px;
+    margin: 5px 0 0;
+}
+
+.subs-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    font-size: 13px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: width 0.3s;
+    width: 100px;
+    background-color: #e9ecef;
+    color: black;
+}
+
+.subs-btn img {
+    margin-right: 5px; 
+}
+        
+.subs-btn-clicked {
+    background-color: black;
+    color: white;
+    width: 65px;
+}
+
+

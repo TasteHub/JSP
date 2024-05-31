@@ -1,7 +1,9 @@
-    <%@ page language="java" contentType="text/html; charset=utf-8"
-        pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<head>
     <link href="css/home/contents.css?after" rel="stylesheet" type="text/css">
-
+</head>
+<body>
     <div class="contents-main">
         <% 
             String title = "영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 ";
@@ -30,9 +32,4 @@
         </div>
         <% } %>
     </div>
-    <style>
-    .contents-main > .content-contents:last-child {
-        margin-bottom: 100px;
-    }
-</style>
 </body>
