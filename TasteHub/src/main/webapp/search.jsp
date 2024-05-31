@@ -13,12 +13,14 @@ text-decoration: none;
 color: black;
 }
 </style>
+
 </head>
+
 <body style="margin: 0; overflow-y: hidden">
 	<%@ include file="./tag_common/header.jsp" %>
 	<div style="display: flex;">
 		<%@ include file="./tag_common/sidebar.jsp" %>
-		<%@ include file="./tag_home/contents.jsp" %>
+		<%@ include file="./tag_search/contents.jsp" %>
 	</div>
 </body>
 </html>

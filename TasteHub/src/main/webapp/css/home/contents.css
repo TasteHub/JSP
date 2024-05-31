@@ -3,9 +3,11 @@
 .contents-main{
 	overflow-y: scroll;
 	height: calc(100vh - 80px);
+	min-width: calc(100% - 280px);
 	margin-top: 25px;
 	display: flex;
 	flex-wrap: wrap;
+	align-content : flex-start;
 	.content-contents{
 		margin-left: 20px;
 		.video-contents{
@@ -36,9 +38,14 @@
 					margin-bottom: 5px;
 				}
 				.user-detail{
+					width: fit-content;
 					color: gray;
 					font-size: 12px;
 					font-weight: 500;
+				}
+				.user-detail:hover{
+					color: black;
+					cursor: pointer;
 				}
 				.etc-detail{
 					color: gray;

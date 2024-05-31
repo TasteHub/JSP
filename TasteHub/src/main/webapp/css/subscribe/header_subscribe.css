@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.header-subscribe{
+	width: 100%;
+	display: flex;
+	align-items: center;
+    justify-content: space-between;
+    margin: 20px 30px 0px 20px;
+    .btn-header{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	    .link-btn{
+			margin-left: 5px;
+			margin-right: 5px;
+			text-decoration: none;
+			text-align: center;
+		}
+	}
+}
