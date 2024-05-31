@@ -17,6 +17,7 @@
         .background-img {
             width: 1060px;
             height: 180px;
+            min-height: 180px;
             border-radius: 15px;
             background-color: gray;
         }
@@ -60,6 +61,8 @@
             flex-direction: column;
             margin-left: 10px;
             margin-top: 30px;
+            overflow-y: scroll;
+            height: calc(100vh - 80px);
         }
         
         .subs-btn {
@@ -90,6 +93,7 @@
         .subscribe-hr { 
             width: 85%; 
             height: 1px;
+            min-height: 1px;
             background-color: #FFAC53;
             margin: 0;
             margin-top: 20px;
@@ -113,12 +117,9 @@
             color: white;
         }
         
-        .contents {
-            overflow: hidden;
-        }
     </style>           
 </head>
-<body style="margin: 0;">
+<body style="margin: 0; overflow-y: hidden">
     <%@ include file="./tag_common/header.jsp" %>
     <div style="display: flex;">
         <%@ include file="./tag_common/sidebar.jsp" %>

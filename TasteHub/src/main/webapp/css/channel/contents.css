@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
 .contents-main{
-	overflow-y: scroll;
-	height: calc(100vh - 80px);
 	min-width: calc(100% - 280px);
 	margin-top: 25px;
 	display: flex;

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <head>
-    <link href="css/home/contents.css?after" rel="stylesheet" type="text/css">
+    <link href="css/channel/contents.css?after" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="contents-main">
