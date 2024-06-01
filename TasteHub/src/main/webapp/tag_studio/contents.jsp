@@ -21,7 +21,7 @@
 				<input type="file" class="video-input" name="video" id="video-input"
 				accept=".mp4,.mkv,.avi" required>
 				<h3>썸네일 선택 (jpg, jpeg, png)</h3>
-				<img id="imgPreview" src="img/Studio/iconNoImg.png" width="400px" height="235px">
+				<img class="thumbnail-preview" id="imgPreview" src="img/Studio/iconNoImg.png" width="400px" height="235px">
 				<input type="file" class="thumbnail-input" name="thumbnail" id="thumbnail-input"
 					accept=".jpeg,.jpg,.png" required>
 			</div>		

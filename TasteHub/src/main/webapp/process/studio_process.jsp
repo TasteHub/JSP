@@ -19,8 +19,8 @@
 <%	
 	Region region = Region.AP_NORTHEAST_2;
 	//git에 키값이 안올라가서 임의로 부여(사용시 변경해야함)
-	AwsBasicCredentials awsCreds = AwsBasicCredentials.create("accessKey",
-			"privatekey");
+	AwsBasicCredentials awsCreds = AwsBasicCredentials.create("AccessKey",
+			"PrivateKey");
 	String bucketname = "bucket-tastehub";
 	S3Client client = S3Client.builder().region(region)
             .credentialsProvider(StaticCredentialsProvider.create(awsCreds))
@@ -49,21 +49,23 @@
 %>
 <%@ include file ="connect_DB.jsp" %>
 <%
-	request.setCharacterEncoding("utf-8");
-	String title = request.getParameter("title");
-	String detail = request.getParameter("detail");
-	
+	int userID = 1;
+	String title = multi.getParameter("title");
+	String detail = multi.getParameter("detail");	
+
 	PreparedStatement pstmt=null;
 	
 	try{	
-		String sql = "INSERT INTO Video(userID, title, detail, createDate, urlThumbnail, urlVideo, cntView, cntLike) VALUES (?, ?, ?, now(), ?, ?, 0, 0)";
+		String sql = "INSERT INTO Video(userID, title, detail, createDate, urlThumbnail, urlVideo, cntView, cntLike)"+
+						" VALUES (?, ?, ?, now(), ?, ?, 0, 0)";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, 1);
+		pstmt.setInt(1, userID);
 		pstmt.setString(2, title);
 		pstmt.setString(3, detail);
-		pstmt.setString(4, url[0]);
-		pstmt.setString(5, url[1]);
-		out.println("삽입성공");
+		pstmt.setString(4, url[1]);
+		pstmt.setString(5, url[0]);
+		
+		pstmt.executeUpdate();
 	}catch(SQLException ex){
 		out.println("Video table insert fail");
 		out.println("SQLException: " + ex.getMessage());
