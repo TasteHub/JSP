@@ -17,7 +17,8 @@
 	try{
 		String sql = "SELECT userID, userName, urluserImg, videoID, urlthumbnail, title, cntView, createDate FROM "+
 		"( SELECT U.userID, userName, urluserImg, videoID, urlthumbnail, title, cntView, createDate, cntLike FROM "+
-		"Video as V, User as U WHERE U.userID = V.userID ORDER BY createDate) as VU ORDER BY cntLike DESC";
+		"Video as V, User as U WHERE U.userID = V.userID ORDER BY UNIX_TIMESTAMP(createDate) desc LIMIT 0,30)"+
+		" as VU ORDER BY cntLike DESC";
 		stmt=conn.createStatement();
 		rs = stmt.executeQuery(sql);
 		while(rs.next()){
@@ -32,7 +33,7 @@
 %>
 	<div class="content-contents">
 		<a href="videoDetailsPage.jsp?videoID=<%=videoID%>">
-			<div class="video-contents" style="background-image: url('<%=urlthumbnail%>'); background-color: gray;" ></div>
+			<div class="video-contents" style="background-image: url('<%=urlthumbnail%>'); background-color: black" ></div>
 		</a>
 		<div class="detail-contents">
 			<a href="channel.jsp?userID=<%=userID%>">
