@@ -26,7 +26,7 @@
             .credentialsProvider(StaticCredentialsProvider.create(awsCreds))
             .build();
 
-	MultipartRequest multi = new MultipartRequest(request, "C:\\upload", 5 * 1024 * 1024,
+	MultipartRequest multi = new MultipartRequest(request, "C:\\upload", 512 * 1024 * 1024,
 			"utf-8", new DefaultFileRenamePolicy());
 	
 	Enumeration <?>files = multi.getFileNames();

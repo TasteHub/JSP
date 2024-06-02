@@ -42,9 +42,11 @@
 				}
 				.user-detail{
 					width: fit-content;
+					height: 18px;
 					color: gray;
 					font-size: 12px;
 					font-weight: 500;
+					align-content: flex-end;
 				}
 				.user-detail:hover{
 					color: black;
