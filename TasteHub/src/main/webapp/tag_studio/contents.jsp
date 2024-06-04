@@ -13,7 +13,7 @@
 				<h3>제목</h3>
 				<input name="title" type="text" class="title-input" placeholder="영상 제목" required> 
 				<h3>내용</h3>
-				<textarea name="detail" class="exp-input" placeholder="영상 설명" required></textarea>
+				<textarea name="detail" class="exp-input" placeholder="영상 설명" maxlength="60000" required></textarea>
 			</div>
 			<div class="video-upload">
 				<h3>비디오 선택 (mp4, mkv, avi)</h3>
