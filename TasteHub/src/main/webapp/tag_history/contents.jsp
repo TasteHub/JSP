@@ -4,17 +4,24 @@
     pageEncoding="utf-8"%>
 <link href="css/history/contents.css?after" rel="stylesheet" type="text/css">
 
+<%
+	String query = request.getParameter("query");
+	if(query == null)
+		query = "";
+	else
+		query = query.replace('\\', ' ').trim();
+	String sql_search = "";
+%>
 <div class="contents-main">
 	<%@ include file ="../process/connect_DB.jsp" %>
 	<h2 style="width: 100%; min-width: 140px;">방문 기록</h2>
 	<form action="history.jsp" method="get" class="group">
 		<img alt="" src="img/Header/btnSearch.png" class="icon">
-	    <input name="query" placeholder="방문 기록 검색" autocomplete="off" type="search" class="input">
+	    <input name="query" placeholder="방문 기록 검색" autocomplete="off" type="search" class="input" value=<%=query %>>
 	</form>
 <%
-	String query = request.getParameter("query");
-	String sql_search = "";
-	if(query != null && !query.trim().isEmpty()){
+	
+	if(!query.trim().isEmpty()){
 		sql_search = " AND MATCH(title) AGAINST('"+ query +"' IN BOOLEAN MODE) ";
 	}
 	
@@ -33,7 +40,8 @@
 		String sql = "SELECT WV.userID, WV.videoID, urlThumbnail, title, userName, cntView, createDate, detail, viewDate " +
 					 "FROM ( SELECT viewDate, V.videoID, V.userID, title, urlThumbnail, cntView, createDate, detail " +
 				     "FROM View as W, Video as V WHERE W.userID = " + input + " AND V.videoID = W.videoID " + sql_search +
-					 "ORDER BY UNIX_TIMESTAMP(viewDate) desc LIMIT 0,30) as WV, User as U WHERE U.userID = WV.userID;";
+					 "ORDER BY UNIX_TIMESTAMP(viewDate) desc LIMIT 0,30) as WV, User as U WHERE U.userID = WV.userID "+
+				     "GROUP BY videoID";
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);
 		while(rs.next()){
@@ -94,15 +102,15 @@
 		</div>
 
 	<%	
-}
-	}catch(SQLException ex){
-		out.println("Video table Select fail");
-		out.println("SQLException: " + ex.getMessage());
-	}finally{
-		if(stmt!=null)
-			stmt.close();
-		if(conn!=null)
-			conn.close();
 	}
-%>
+		}catch(SQLException ex){
+			out.println("Video table Select fail");
+			out.println("SQLException: " + ex.getMessage());
+		}finally{
+			if(stmt!=null)
+				stmt.close();
+			if(conn!=null)
+				conn.close();
+		}
+	%>
 </div>

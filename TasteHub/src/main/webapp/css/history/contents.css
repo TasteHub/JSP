@@ -77,9 +77,9 @@
 			flex-direction: row;
 			.thumbnail-video{
 				width: 235px;
-				height: 138px;
+				height: 132px;
 				min-width: 235px;
-				min-height: 138px;
+				min-height: 132px;
 				border-radius: 15px;
 				margin-right: 20px;
 				background-size: contain;

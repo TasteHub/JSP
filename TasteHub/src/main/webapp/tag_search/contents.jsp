@@ -13,7 +13,7 @@
 	Date createDate;
 	int videoID, userID;
 	
-	String input = request.getParameter("searchTxt");
+	String input = request.getParameter("searchTxt").replace('\\', ' ').trim();
 	ResultSet rs = null;
 	Statement stmt = null;
 	try{

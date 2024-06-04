@@ -23,6 +23,8 @@
 		rs = stmt.executeQuery(sql);
 		while(rs.next()){
 			title = rs.getString("title");
+			if(title.length()>30)
+				title = title.substring(0,30) + "...";
 			urlthumbnail = rs.getString("urlthumbnail");
 			userName = rs.getString("userName");
 			cntView = rs.getLong("cntView");

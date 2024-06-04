@@ -12,29 +12,38 @@
 
 	.content-contents_list{
 		margin: 10px 0px;
+		width: 100%;
+		min-width: 500px;
+		
 		.video-content{
 			display: flex;
 			flex-direction: row;
 			border-bottom: 1px solid #FFAC8880;
 			padding: 10px 0px;
-			width: fit-content;
 			.thumbnail-video{
 				width: 235px;
-				height: 138px;
+				height: 132px;
 				min-width: 235px;
-				min-height: 138px;
+				min-height: 132px;
 				border-radius: 15px;
 				margin-right: 20px;
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
 			}
 			.text-video{
 				*{
 					margin: 0px;
 				}
+				width: calc(100% - 250px);
+				min-width: calc(100% - 250px);
 				.title-video{
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
+					margin: 0;
 					.title-text{
+						width: 350px;
 						min-width: 80%;
 						font-size: 18px;
 						font-weight: 550;
@@ -64,6 +73,10 @@
 					}
 					.user-text{
 						margin-left: 0;
+						margin-right: 4px;
+						width: fit-content;
+						height: 18px;
+						align-content: center;
 					}
 					.user-text:hover{
 						color: black;
@@ -71,8 +84,8 @@
 					}
 				}
 				.exp-text{
-					max-width: 90%;
-					min-width: 280px;
+					max-width: 95%;
+					min-width: 200px;
 					margin-top: 5px;
 					color: gray;
 					font-size: 12px;
