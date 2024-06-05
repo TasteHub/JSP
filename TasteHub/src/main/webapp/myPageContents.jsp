@@ -62,6 +62,8 @@
         .contents-container {
             width: 80%;
             margin-left: 280px;
+            overflow-y: scroll;
+            height: calc(100vh - 80px);
         }
         textarea {
             border-radius: 10px; 

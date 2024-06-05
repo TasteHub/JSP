@@ -62,7 +62,7 @@
 	        <span>TasteHub</span>
 	    </a>
 	    <p class="word-join">Sign up
-
+		<form action="process/joinHandler.jsp" method="post" onsubmit="return validateForm()">
 		<div class="input-join">
 		    <label for="name" class="input-word">이름</label>
 		    <input class="input" type="text" id="name" name="name" maxlength="10" required><br>
@@ -78,7 +78,8 @@
 		    <input class="input" type="password" id="confirm_password" name="confirm_password" required>
 		    <span id="password-error" style="color: red;"></span><br> 
 		</div>
-	<input type="button" class="join-btn" value="가입하기" onclick="return validateForm()"><br>
+	<input type="submit" class="join-btn" value="가입하기" onclick="return validateForm()"><br>
+	</form>
 	<span id="form-error" style="color: red;"></span> 
 	
     	<div class="go-login">
@@ -88,6 +89,5 @@
 		    </a>
 	    </div>
 	</div>
-</form>
 </body>
 </html>
