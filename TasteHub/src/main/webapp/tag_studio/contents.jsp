@@ -41,7 +41,7 @@
 		    <div class="dot-spinner__dot"></div>
 		    <div class="dot-spinner__dot"></div>
 		</div>
-		<p>Loading...</p>
+		<p class="text-loader">Loading...</p>
 	</div>
 </div>
 
