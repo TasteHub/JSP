@@ -10,25 +10,34 @@ ResultSet rs = null;
 PreparedStatement pstmt = null;
 
 try {
-    String sql = "SELECT email, passwd FROM User WHERE email=? AND passwd=?";
+    String sql = "SELECT email, userID, userName, urlUserImg, urlBackImg, introTxt FROM User WHERE email=? AND passwd=?";
     pstmt = conn.prepareStatement(sql);
-    out.println(email);
-    out.println(passwd);
     pstmt.setString(1, email);
     pstmt.setString(2, passwd);
     rs = pstmt.executeQuery();
     
     if (rs.next()) {
-        out.println("login success");
+        String userID = rs.getString("userID");
+        String name = rs.getString("userName");
+        String profileImage = rs.getString("urlUserImg");
+        String backgroundImage = rs.getString("urlBackImg");
+        String introduce = rs.getString("introTxt");
+
+        HttpSession sessionObj = request.getSession();
+        sessionObj.setAttribute("email", email);
+        sessionObj.setAttribute("userID", userID);
+        sessionObj.setAttribute("userName", name);
+        sessionObj.setAttribute("urlUserImg", profileImage);
+        sessionObj.setAttribute("urlBackImg", backgroundImage);
+        sessionObj.setAttribute("introTxt", introduce);
+        
         response.sendRedirect("../home.jsp");
     } else {
-        out.println("login fail");
         response.sendRedirect("../login.jsp");
     }
 } catch (SQLException ex) {
     out.println("SQLException: " + ex.getMessage());
 } finally {
-    
     try {
         if (rs != null) rs.close();
         if (pstmt != null) pstmt.close();

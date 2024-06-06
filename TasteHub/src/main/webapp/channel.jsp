@@ -116,7 +116,6 @@
             background-color: black;
             color: white;
         }
-        
     </style>           
 </head>
 <body style="margin: 0; overflow-y: hidden">

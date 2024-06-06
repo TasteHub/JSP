@@ -2,9 +2,15 @@ eclipse.preferences.version=1
 encoding//src/main/webapp/channel.jsp=UTF-8
 <<<<<<< HEAD
 encoding//src/main/webapp/login.jsp=UTF-8
+encoding//src/main/webapp/myPage.jsp=UTF-8
+encoding//src/main/webapp/process/joinHandler.jsp=UTF-8
 encoding//src/main/webapp/process/loginHandler.jsp=UTF-8
+<<<<<<< HEAD
+encoding//src/main/webapp/process/myPageHandler.jsp=UTF-8
+=======
 =======
 encoding//src/main/webapp/process/connect_DB.jsp=UTF-8
 encoding//src/main/webapp/process/studio_process.jsp=UTF-8
 >>>>>>> refs/heads/makevideo
+>>>>>>> branch 'develop' of https://github.com/TasteHub/JSP.git
 encoding//src/main/webapp/videoDetailsPage.jsp=UTF-8
