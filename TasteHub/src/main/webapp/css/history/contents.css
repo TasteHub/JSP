@@ -3,9 +3,8 @@
 .contents-main{
 	overflow-y: scroll;
 	height: calc(100vh - 80px);
-	min-width: calc(90% - 290px);
+	min-width: calc(90% - 280px);
 	margin-top: 25px;
-	margin-left: 10px;
 	display: inline-block;
 	align-content: flex-start;
 	padding: 0 5%;
