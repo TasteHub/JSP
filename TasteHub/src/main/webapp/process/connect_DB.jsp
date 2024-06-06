@@ -1,29 +1,15 @@
 <%@page import="javax.sql.*"%>
 <%@page import="javax.naming.*"%>
 <%@page import="java.sql.*"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<h2>JDBCµå¶óÀÌ¹ö Å×½ºÆ®</h2>
-
-	<%
+<%
 	Connection conn = null;
 
 	try {
 		Context init = new InitialContext();
 		DataSource ds = (DataSource)init.lookup("java:comp/env/jdbc/mysql");
 		conn = ds.getConnection();
-		out.println("¿¬°á ¼º°ø");
 	} catch (Exception e) {
-		out.println("¿¬°á ½ÇÆÐ");
+		out.println("ì—°ê²° ì‹¤íŒ¨");
 		out.println(e.getMessage());
 	}
-	%>
-</body>
-</html>
+%>

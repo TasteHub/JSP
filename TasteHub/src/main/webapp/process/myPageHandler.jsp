@@ -1,42 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
-<%@ page import="javax.servlet.http.*" %>
 <%@ include file="connect_DB.jsp" %>
 <%
 request.setCharacterEncoding("utf-8");
 
-// 세션에서 사용자 ID 가져오기
-String userID = (String) session.getAttribute("userID");
+String userID = (String)session.getAttribute("userID");
 
-// 폼에서 전송된 수정된 정보 가져오기
-String newUserName = request.getParameter("name");
-String newUrlUserImg = request.getParameter("profileImage");
-String newUrlBackImg = request.getParameter("backgroundImage");
-String newIntroTxt = request.getParameter("introduce");
+String userName = request.getParameter("name");
+String urlUserImg = request.getParameter("profileImage");
+String urlBackImg = request.getParameter("backgroundImage");
+String introTxt = request.getParameter("introduce");
+
+// 입력되지 않은 부분이 비어 있는지 확인하고 null로 처리
+if (userName == null || userName.trim().isEmpty()) {
+    userName = null;
+}
+if (urlUserImg == null || urlUserImg.trim().isEmpty()) {
+    urlUserImg = null;
+}
+if (urlBackImg == null || urlBackImg.trim().isEmpty()) {
+    urlBackImg = null;
+}
+if (introTxt == null || introTxt.trim().isEmpty()) {
+    introTxt = null;
+}
 
 PreparedStatement pstmt = null;
 
 try {
-    String sql = "UPDATE User SET userName=?, urlUserImg=?, urlBackImg=?, introTxt=? WHERE userID=?";
+    String sql = "UPDATE User SET userName = ?, urlUserImg = ?, urlBackImg = ?, introTxt = ? WHERE userID = ?";
     pstmt = conn.prepareStatement(sql);
-    pstmt.setString(1, newUserName);
-    pstmt.setString(2, newUrlUserImg);
-    pstmt.setString(3, newUrlBackImg);
-    pstmt.setString(4, newIntroTxt);
+    pstmt.setString(1, userName);
+    pstmt.setString(2, urlUserImg);
+    pstmt.setString(3, urlBackImg);
+    pstmt.setString(4, introTxt);
     pstmt.setString(5, userID);
 
-    int result = pstmt.executeUpdate();
-    
-    if (result > 0) {
-        // 업데이트가 성공하면 세션에도 변경된 정보 업데이트
-        HttpSession sessionObj = request.getSession();
-        sessionObj.setAttribute("userName", newUserName);
-        sessionObj.setAttribute("urlUserImg", newUrlUserImg);
-        sessionObj.setAttribute("urlBackImg", newUrlBackImg);
-        sessionObj.setAttribute("introTxt", newIntroTxt);
-        
-        response.sendRedirect("../myPage.jsp");
+    int rowsAffected = pstmt.executeUpdate();
+
+    if (rowsAffected > 0) {
+        out.println("정보 업데이트에 성공했습니다.");
     } else {
-        out.println("Failed to update user information.");
+        out.println("정보 업데이트에 실패했습니다.");
     }
 } catch (SQLException ex) {
     out.println("SQLException: " + ex.getMessage());
@@ -48,5 +53,4 @@ try {
         out.println("SQLException in finally: " + ex.getMessage());
     }
 }
-
 %>

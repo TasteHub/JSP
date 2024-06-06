@@ -18,11 +18,11 @@
             color: black;
         }
 		.content-wrapper {
-		            overflow-y: scroll;
-		            height: calc(100vh - 80px);
-			}
+		    overflow-y: scroll;
+		    height: calc(100vh - 80px);
+		}
         .profile-container {
-             display: inline-block;
+            display: inline-block;
         }
         .profile-container-2 {
 			display: flex;
@@ -34,7 +34,6 @@
             height: 180px;
             min-height: 180px;
             margin-top: 30px;
-            min-height: 180px;
             border-radius: 15px;
             cursor: pointer;
         }
@@ -88,7 +87,7 @@
 			cursor: pointer;
 		}
 		.myPage-first {
-		margin-bottom: 5%;
+		    margin-bottom: 5%;
 		}
     </style>
 </head>
@@ -97,40 +96,39 @@
     <div style="display: flex;">
         <%@ include file="./tag_common/sidebar.jsp" %>
         <div class="contetnt-wrapper">
-        <div class="profile-container">
-        <form action="process/myPageHandler.jsp" method="post" enctype="multipart/form-data">
-
-        	<label for="back-file-input">
-            	<img id="background-image" class="background-image" alt="Background Image" src="<%= backimgSrc %>">
-            </label>
-            <input id="back-file-input" type="file" style="display: none;">
-            <div class="profile-container-2">
-            <label for="file-input">
-                <img id="profile-image" class="profile-image" alt="Profile Image" src="<%= userimgSrc %>">
-            </label>
-            <input id="file-input" type="file" style="display: none;">
-            <div class="user-info">
-                <p>
-                    <strong id="user-name"><%= userName %></strong>
-                    <img id="edit-image" src="<%= editimgSrc %>" alt="Edit" style="width: 20px; height: 20px; margin-left: 10px; cursor: pointer;">
-                </p>
-                <p><%= userMail %></p>
-                <textarea id="introduce-text" rows="4" cols="50" maxlength="100" placeholder="채널을 소개해 보세요."><%= introduce %></textarea>
-                <br>
-                <button type="submit" class="save-introduce">저장</button>
-                </div>
-            </div>
-                <div class="myPage-hr"></div>
+            <div class="profile-container">
+                <form action="process/myPageHandler.jsp" method="post" enctype="multipart/form-data">
+                    <label for="back-file-input">
+                        <img id="background-image" class="background-image" alt="Background Image" src="<%= backimgSrc %>">
+                    </label>
+                    <input id="back-file-input" type="file" name="backgroundImage" style="display: none;">
+                    <div class="profile-container-2">
+                        <label for="file-input">
+                            <img id="profile-image" class="profile-image" alt="Profile Image" src="<%= userimgSrc %>">
+                        </label>
+                        <input id="file-input" type="file" name="profileImage" style="display: none;">
+                        <div class="user-info">
+                            <p>
+                                <strong id="user-name"><%= userName %></strong>
+                                <img id="edit-image" src="<%= editimgSrc %>" alt="Edit" style="width: 20px; height: 20px; margin-left: 10px; cursor: pointer;">
+                            </p>
+                            <p><%= userMail %></p>
+                            <textarea id="introduce-text" name="introduce" rows="4" cols="50" maxlength="100" placeholder="채널을 소개해 보세요."><%= introduce %></textarea>
+                            <br>
+                            <button type="submit" class="save-introduce">저장</button>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="myPage-hr"></div>
                     <div class="myPage-first">
 				        <img alt="" src="img/MyPage/myPageImage.jpg" width="130px" height="">
 				        <p>원하는 기기에서 콘텐츠를 만드세요<br>
 				        <p>집에서는 물론 이동 중에도 녹화하고 업로드할 수<br>있습니다. 공개 상태로 설정한 모든 콘텐츠가 여기<br>에 표시됩니다.<br><br>
 				        <input type="button" class="create-btn" value="만들기" id="create-button">
 				    </div>
-		        </form>
-		        </div>
-		    </div>
-		    </div>
+            </div>
+        </div>
+    </div>
 
     <script>
 	    document.getElementById('back-file-input').addEventListener('change', function(event) {

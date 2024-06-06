@@ -11,9 +11,9 @@
 		<div class="upload-contents">
 			<div class="text-upload">
 				<h3>제목</h3>
-				<input type="text" class="title-input" placeholder="영상 제목" required> 
+				<input name="title" type="text" class="title-input" placeholder="영상 제목" required> 
 				<h3>내용</h3>
-				<textarea class="exp-input" placeholder="영상 설명" required></textarea>
+				<textarea name="detail" class="exp-input" placeholder="영상 설명" maxlength="60000" required></textarea>
 			</div>
 			<div class="video-upload">
 				<h3>비디오 선택 (mp4, mkv, avi)</h3>
@@ -21,7 +21,7 @@
 				<input type="file" class="video-input" name="video" id="video-input"
 				accept=".mp4,.mkv,.avi" required>
 				<h3>썸네일 선택 (jpg, jpeg, png)</h3>
-				<img id="imgPreview" src="img/Studio/iconNoImg.png" width="400px" height="235px">
+				<img class="thumbnail-preview" id="imgPreview" src="img/Studio/iconNoImg.png" width="400px" height="235px">
 				<input type="file" class="thumbnail-input" name="thumbnail" id="thumbnail-input"
 					accept=".jpeg,.jpg,.png" required>
 			</div>		

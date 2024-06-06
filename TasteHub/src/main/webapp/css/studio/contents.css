@@ -43,6 +43,9 @@
 				margin-top: 10px;
 				object-fit: contain;
 			}
+			.thumbnail-preview{
+				object-fit: contain;
+			}
 		}
 	}
 	.submit-upload{

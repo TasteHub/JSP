@@ -12,8 +12,11 @@
 		margin-left: 20px;
 		.video-contents{
 			width: 350px;
-			height: 206px;
+			height: 197px;
 			border-radius: 15px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 		.detail-contents{
 			width: 350px;
@@ -25,6 +28,7 @@
 				margin-top: 12px;
 				margin-right: 12px;
 				border-radius: 18px;
+				background-size: cover;
 			}
 			.text-detail{
 				width: 308px;
@@ -35,13 +39,14 @@
 				.title-detail{
 					font-size: 15px;
 					font-weight: 700;
-					margin-bottom: 5px;
 				}
 				.user-detail{
 					width: fit-content;
+					height: 18px;
 					color: gray;
 					font-size: 12px;
 					font-weight: 500;
+					align-content: flex-end;
 				}
 				.user-detail:hover{
 					color: black;
