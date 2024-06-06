@@ -20,6 +20,7 @@
 	    <input name="query" placeholder="방문 기록 검색" autocomplete="off" type="search" class="input" value=<%=query %>>
 	</form>
 <%
+	int index = 0;
 	
 	if(!query.trim().isEmpty()){
 		sql_search = " AND MATCH(title) AGAINST('"+ query +"' IN BOOLEAN MODE) ";
@@ -45,6 +46,7 @@
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);
 		while(rs.next()){
+			index++;
 			title = rs.getString("title");
 			if(title.length()>30)
 				title = title.substring(0,30) + "...";
@@ -112,5 +114,17 @@
 			if(conn!=null)
 				conn.close();
 		}
+	if(index == 0){
+	%>
+		<div class="noResult-contents">
+			<img class="img-noResult" alt="" src="./img/Search/noresIcon.png">
+			<div class="text-noResult">
+				<p class="query-text">'<%=request.getParameter("query")%>'</p>
+				<p class="info-text"> 에 대한 검색 결과가 없습니다.</p>
+			</div>
+			<p class="etc-noResult">비슷한 다른 검색어를 입력해보세요.</p>
+		</div>
+	<%
+		} 
 	%>
 </div>

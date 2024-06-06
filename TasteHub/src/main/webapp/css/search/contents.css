@@ -79,7 +79,35 @@
 					font-weight: 500;
 				}
 			}
+		}	
+	}
+	.noResult-contents{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 70%;
+		width: 90%;
+		.text-noResult{
+			display: flex;
+			align-items: center;
+			*{
+				font-size: 16px;
+				font-weight: 600;
+			}
+			.query-text{
+				color: #FFAC45;
+				margin-right: 5px;
+			}
+			.info-text{
+				color: #767676;
+			}
 		}
-		
+		.etc-noResult{
+			margin: 0;
+			font-size: 14px;
+			font-weight: 500;
+			color: #C0C0C0;
+		}
 	}
 }

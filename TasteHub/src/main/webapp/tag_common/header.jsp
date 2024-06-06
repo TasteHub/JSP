@@ -2,8 +2,11 @@
     pageEncoding="utf-8"%>
 <link href="css/common/header.css?after" rel="stylesheet" type="text/css">
 
-<%!
+<%
 	String userimgSrc = "img/Header/profileImg.jpg";
+	String searchTxt = request.getParameter("searchTxt");
+	if(searchTxt==null)
+		searchTxt = "";
 %>
 <div class="header-main">
 	<a class="homeBtn-header" href="home.jsp">
@@ -11,7 +14,8 @@
 		TasteHub
 	</a>
 	<form class="searchBar-header" name="searchbar" action="./search.jsp" method="get">
-		<input type="text" class="text-searchBar" name="searchTxt" placeholder="검색" autocomplete="off" minlength="2">
+		<input type="text" class="text-searchBar" name="searchTxt" placeholder="검색" autocomplete="off" minlength="2"
+		 value=<%=searchTxt %>>
 		<input type="submit" class="btnArea-searchBar" style="background-image: url('img/Header/btnSearch.png');">
 	</form>
 	<div class="btnArea-header">

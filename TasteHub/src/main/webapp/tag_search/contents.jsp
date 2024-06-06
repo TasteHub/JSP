@@ -8,12 +8,15 @@
 <div class="contents-main">
 <%@ include file ="../process/connect_DB.jsp" %>
 <%
+	int index = 0;
+	
 	String title, urlthumbnail, userName, urluserImg, detail;
 	long cntView;
 	Date createDate;
 	int videoID, userID;
 	
-	String input = request.getParameter("searchTxt").replace('\\', ' ').trim();
+	String query = request.getParameter("searchTxt");
+	String input = query.replace('\\', ' ').trim();
 	ResultSet rs = null;
 	Statement stmt = null;
 	try{
@@ -24,6 +27,7 @@
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);
 		while(rs.next()){
+			index++;
 			title = rs.getString("title");
 			if(title.length()>30)
 				title = title.substring(0,30) + "...";
@@ -57,15 +61,27 @@
 		</div>
 	</div>
 <%
-	}
-		}catch(SQLException ex){
-			out.println("Video table Select fail");
-			out.println("SQLException: " + ex.getMessage());
-		}finally{
-			if(stmt!=null)
-				stmt.close();
-			if(conn!=null)
-				conn.close();
 		}
+	}catch(SQLException ex){
+		out.println("Video table Select fail");
+		out.println("SQLException: " + ex.getMessage());
+	}finally{
+		if(stmt!=null)
+			stmt.close();
+		if(conn!=null)
+			conn.close();
+	}
+	if(index == 0){
+%>
+	<div class="noResult-contents">
+		<img class="img-noResult" alt="" src="./img/Search/noresIcon.png">
+		<div class="text-noResult">
+			<p class="query-text">'<%=query%>'</p>
+			<p class="info-text"> 에 대한 검색 결과가 없습니다.</p>
+		</div>
+		<p class="etc-noResult">비슷한 다른 검색어를 입력해보세요.</p>
+	</div>
+<%
+	} 
 %>
 </div>

@@ -14,7 +14,7 @@ color: black;
 }
 </style>
 </head>
-<body style="margin: 0; overflow-y: hidden">
+<body style="margin: 0; overflow-y: hidden; position: relative;">
 	<%@ include file="./tag_common/header.jsp" %>
 	<div style="display: flex;">
 		<%@ include file="./tag_common/sidebar.jsp" %>

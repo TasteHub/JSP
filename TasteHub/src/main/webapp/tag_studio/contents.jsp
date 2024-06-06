@@ -7,7 +7,7 @@
 
 <div class="contents-main">
 	<h2 class="title-contents">동영상 업로드</h2>
-	<form action="process/studio_process.jsp" method="post" enctype="multipart/form-data">
+	<form action="process/studio_process.jsp" method="post" enctype="multipart/form-data" id="submit-btn">
 		<div class="upload-contents">
 			<div class="text-upload">
 				<h3>제목</h3>
@@ -27,9 +27,22 @@
 			</div>		
 		</div>
 		<div class="submit-upload">
-			<input type="submit" class="btn-submit" name="sumbit" value="업  로  드">		
+			<input type="submit" class="btn-submit" name="sumbit" value="업  로  드" >		
 		</div>
 	</form>
+	<div class="loader-contents" style="display: none;" id="loader">
+		<div class="dot-spinner">
+		    <div class="dot-spinner__dot"></div>
+		    <div class="dot-spinner__dot"></div>
+		    <div class="dot-spinner__dot"></div>
+		    <div class="dot-spinner__dot"></div>
+		    <div class="dot-spinner__dot"></div>
+		    <div class="dot-spinner__dot"></div>
+		    <div class="dot-spinner__dot"></div>
+		    <div class="dot-spinner__dot"></div>
+		</div>
+		<p>Loading...</p>
+	</div>
 </div>
 
 <script>
@@ -60,5 +73,11 @@
 		  } else {
 			viPreview.src = ''; // 미리보기 초기화
 		}
+	});
+	
+	const submitBtn = document.getElementById('submit-btn');
+	const loader = document.getElementById('loader');
+	submitBtn.addEventListener('submit', function() {
+		loader.style.display = 'flex';
 	});
 </script>
