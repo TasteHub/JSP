@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%
-    String userimgSrc = "img/Header/profileImg.jpg";
-	String backimgSrc = "img/MyPage/backImg.png";
+	String defaultUserImgSrc = "img/Header/profileImg.jpg";
+	String defaultBackImgSrc = "img/MyPage/backImg.png";
+
+    String userimgSrc = (String)session.getAttribute("urlUserImg");  
+	String backimgSrc = (String)session.getAttribute("urlBackImg");  
     String editimgSrc = "img/MyPage/editImg.png";
-    String userName = "이름";  
-    String userMail = "aaa@bbb.ccc"; 
-    String introduce = "";
+    String userName = (String)session.getAttribute("userName");  
+    String userMail = (String)session.getAttribute("email"); 
+    String introduce = (String)session.getAttribute("introTxt");  
+    
+    if (userimgSrc == null) {
+        userimgSrc = defaultUserImgSrc;
+    }
+    if (backimgSrc == null) {
+        backimgSrc = defaultBackImgSrc;
+    }
 %>
 <html>
 <head>

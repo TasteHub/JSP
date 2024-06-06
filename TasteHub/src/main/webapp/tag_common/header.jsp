@@ -56,24 +56,3 @@
         }
     };
 </script>
-=======
-	<a class="homeBtn-header" href="home.jsp">
-		<img alt="" src="img/Header/btnLogo.png" width="40px" height="" style="margin-right: 10px">
-		TasteHub
-	</a>
-	<form class="searchBar-header" name="searchbar" action="./search.jsp" method="get">
-		<input type="text" class="text-searchBar" name="searchTxt" placeholder="검색" autocomplete="off" minlength="2"
-		 value=<%=searchTxt %>>
-		<input type="submit" class="btnArea-searchBar" style="background-image: url('img/Header/btnSearch.png');">
-	</form>
-	<div class="btnArea-header">
-		<a class="videoBtn-btnArea" href="./studio.jsp">
-			<img alt="" src="img/Header/btnVideo.png" width="30px" height="">
-		</a>
-		<img alt="" src="img/Header/btnAlarm.png" width="26px" height="">
-		<a href="login.jsp">
-			<img class="profile-btnArea" alt="" src=<%= userimgSrc %>>
-		</a>
-	</div>
-</div>
->>>>>>> refs/remotes/origin/database
