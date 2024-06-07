@@ -6,10 +6,13 @@
 	PreparedStatement pstmt=null;
 	
 	try{	
-		String sql = "DELETE FROM LikeBtn where videoID = ? AND userID = ?";
+		String sql = "DELETE FROM LikeBtn where videoID = ? AND userID = ?;" +
+					 "UPDATE Video SET cntLike = (SELECT count(likeID) FROM LikeBtn where LikeBtn.videoID = ?) WHERE videoID = ?;";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(2, userID);
 		pstmt.setInt(1, videoID);
+		pstmt.setInt(3, videoID);
+		pstmt.setInt(4, videoID);
 		pstmt.executeUpdate();
 	}catch(SQLException ex){
 		out.println("LikebBtn table delete fail");

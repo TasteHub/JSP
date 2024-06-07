@@ -47,7 +47,7 @@
 						<a href="videoDetailsPage.jsp?videoID=<%=videoID%>">
 							<p class="title-text"><%= title %></p>
 						</a>
-						<a class="del-btn" href="process/deleteLikelist.jsp?userID=<%=userID%>&videoID=<%=videoID%>">
+						<a class="del-btn" href="process/deleteLikelist.jsp?userID=<%=input%>&videoID=<%=videoID%>">
 							<img alt="" src="img/History/btnDeny.png" width="15px" height="">
 						</a>
 					</div>

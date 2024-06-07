@@ -1,5 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+
+<%@ include file ="../process/connect_DB.jsp" %>
+<%
+	//방문 기록 작성
+	int visitUserID = Integer.parseInt((String)session.getAttribute("userID"));
+	int visitVideoID = Integer.parseInt(request.getParameter("videoID"));
+	PreparedStatement pstmt = null;
+	
+	try{	
+		String sql = "INSERT INTO View(userID, videoID, viewDate) VALUES (?, ?, now()); "+
+					 "UPDATE Video SET cntView = (SELECT count(viewID) FROM View WHERE View.videoID = ?) WHERE videoID = ?;";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, visitUserID);
+		pstmt.setInt(2, visitVideoID);
+		pstmt.setInt(3, visitVideoID);
+		pstmt.setInt(4, visitVideoID);
+		pstmt.executeUpdate();
+	}catch(SQLException ex){
+		out.println("View table insert fail");
+		out.println("SQLException: " + ex.getMessage());
+	}finally{
+		if(pstmt!=null)
+			pstmt.close();
+		if(conn!=null)
+			conn.close();
+	}
+%>
 <%
     String title = "영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 ";  
     String viewMore = "더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 "; 
