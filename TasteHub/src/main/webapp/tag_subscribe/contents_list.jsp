@@ -10,9 +10,10 @@
 	String title, urlthumbnail, userName, urluserImg, detail;
 	long cntView;
 	Date createDate;
-	int videoID, userID;
+	int videoID, userID, input = 0;
 	
-	int input = 2;	//세션에 저장된 userID
+	if(session.getAttribute("userID") != null)
+		input = Integer.parseInt((String)session.getAttribute("userID"));	//세션에 저장된 userID
 	ResultSet rs = null;
 	Statement stmt = null;
 	try{

@@ -49,7 +49,7 @@
 %>
 <%@ include file ="connect_DB.jsp" %>
 <%
-	int userID = 1;
+	int userID = Integer.parseInt((String)session.getAttribute("userID"));
 	String title = multi.getParameter("title");
 	String detail = multi.getParameter("detail");	
 

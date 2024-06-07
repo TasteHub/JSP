@@ -2,11 +2,17 @@
 <link href="css/common/header.css?after" rel="stylesheet" type="text/css">
 
 <%
+	int loginID;
     String defaultProfileImg = "img/Header/profileImg.jpg"; 
     String logoutImg = "img/Header/logoutimgSrc.png"; 
 	String searchTxt = request.getParameter("searchTxt");
-	if(searchTxt==null)
+	if(searchTxt == null)
 		searchTxt = "";
+	if(session.getAttribute("userID") == null)
+		response.sendRedirect("./login.jsp");
+	
+	else
+		loginID = Integer.parseInt((String)session.getAttribute("userID"));
 %>
 
 <div class="header-main">

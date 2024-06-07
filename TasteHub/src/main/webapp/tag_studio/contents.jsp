@@ -27,7 +27,7 @@
 			</div>		
 		</div>
 		<div class="submit-upload">
-			<input type="submit" class="btn-submit" name="sumbit" value="업  로  드" >		
+			<input type="submit" class="btn-submit" name="submit" value="업  로  드" >		
 		</div>
 	</form>
 	<div class="loader-contents" style="display: none;" id="loader">
