@@ -62,3 +62,23 @@
 		}
 	}
 }
+
+.noSub-contents{
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	height: 70%;
+	align-items: center;
+	justify-content: center;
+	.img-noSub{
+		width: 200px;
+		margin-bottom: 10px;
+	}
+	.text-noSub{
+		text-align: center;
+		*{
+			color: black;
+			margin: 5px;
+		}
+	}
+}
