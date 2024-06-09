@@ -11,9 +11,9 @@
 		String title, urlthumbnail, userName, urluserImg, detail;
 		long cntView;
 		Date createDate, viewDate;
-		int videoID, userID;
-		
-		int input = 1;	//세션에 저장된 userID
+		int videoID, userID, input = 0;
+		if(session.getAttribute("userID") != null)
+			input = Integer.parseInt((String)session.getAttribute("userID"));	//세션에 저장된 userID
 		ResultSet rs = null;
 		Statement stmt = null;
 		try{
@@ -47,7 +47,7 @@
 						<a href="videoDetailsPage.jsp?videoID=<%=videoID%>">
 							<p class="title-text"><%= title %></p>
 						</a>
-						<a class="del-btn" href="process/deleteLikelist.jsp?userID=<%=userID%>&videoID=<%=videoID%>">
+						<a class="del-btn" href="process/deleteLikelist.jsp?userID=<%=input%>&videoID=<%=videoID%>">
 							<img alt="" src="img/History/btnDeny.png" width="15px" height="">
 						</a>
 					</div>

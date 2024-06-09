@@ -58,6 +58,7 @@
 						height: 20px;
 						border-radius: 10px;
 						background-size: cover;
+						background-position: center;
 					}
 					.user-text{
 						color: gray;

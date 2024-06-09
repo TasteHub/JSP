@@ -4,7 +4,7 @@
 			auth="Container"
 			driverClassName="com.mysql.cj.jdbc.Driver"
 			type="javax.sql.DataSource"
-			url = "jdbc:mysql://tempdb.c5aukk04odjh.ap-northeast-2.rds.amazonaws.com:3306/tasteHub"
+			url = "jdbc:mysql://tempdb.c5aukk04odjh.ap-northeast-2.rds.amazonaws.com:3306/tasteHub?allowMultiQueries=true"
 			username = "root"
 			password = "chltjsrb"
 			maxActive="20"

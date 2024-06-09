@@ -7,10 +7,13 @@
 	PreparedStatement pstmt=null;
 	
 	try{	
-		String sql = "DELETE FROM View where videoID = ? AND userID = ?";
+		String sql = "DELETE FROM View where videoID = ? AND userID = ?;" +
+				 	 "UPDATE Video SET cntView = (SELECT count(viewID) FROM View WHERE View.videoID = ?) WHERE videoID = ?;";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(2, userID);
 		pstmt.setInt(1, videoID);
+		pstmt.setInt(3, videoID);
+		pstmt.setInt(4, videoID);
 		pstmt.executeUpdate();
 	}catch(SQLException ex){
 		out.println("View table delete fail");

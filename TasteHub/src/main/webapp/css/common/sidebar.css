@@ -52,6 +52,8 @@
 		width: 25px;
 		height: 25px;
 		border-radius: 50%;
+		background-size: cover;
+		background-position: center;
 	}
 	&::-webkit-scrollbar{
         width: 4px;

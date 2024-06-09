@@ -31,43 +31,54 @@
 	
 	Enumeration <?>files = multi.getFileNames();
 	while(files.hasMoreElements()){
-		//S3 bucket에 파일 넣기
 		String name = (String)files.nextElement();
-		String keyname = "studio/" + UUID.randomUUID() + multi.getOriginalFileName(name);
 		File file = multi.getFile(name);
-		
-		PutObjectRequest requestb = PutObjectRequest.builder()
-				.bucket(bucketname).key(keyname).acl("public-read").build();
-		
-		client.putObject(requestb, RequestBody.fromFile(file));
-		
-		//넣은 후 링크 저장(넣을 파일이 2개여서 순차적으로 저장)
-		url[index] = new String();
-		url[index] = "https://bucket-tastehub.s3.ap-northeast-2.amazonaws.com/" + keyname;
-		index++;
+		if(file != null){
+			//S3 bucket에 파일 넣기
+			String keyname = "myPage/" + UUID.randomUUID() + multi.getOriginalFileName(name);
+			
+			PutObjectRequest requestb = PutObjectRequest.builder()
+					.bucket(bucketname).key(keyname).acl("public-read").build();
+			
+			client.putObject(requestb, RequestBody.fromFile(file));
+			
+			//넣은 후 링크 저장(넣을 파일이 2개여서 순차적으로 저장)
+			if(name.equals("backgroundImage")){
+				url[1] = new String();
+				url[1] = "https://bucket-tastehub.s3.ap-northeast-2.amazonaws.com/" + keyname;
+			}
+			else if(name.equals("profileImage")){
+				url[0] = new String();
+				url[0] = "https://bucket-tastehub.s3.ap-northeast-2.amazonaws.com/" + keyname;
+			}
+		}
 	}
 %>
 <%@ include file ="connect_DB.jsp" %>
 <%
 	int userID = Integer.parseInt((String)session.getAttribute("userID"));
-	String title = multi.getParameter("title");
-	String detail = multi.getParameter("detail");	
+	String userName = multi.getParameter("userName");
+	String introTxt = multi.getParameter("introTxt");	
 
 	PreparedStatement pstmt=null;
-	
+	String sql_back = "";
+	if(url[1] != null){
+		sql_back = ", urlBackImg = '" + url[1] + "'";
+	}
+	String sql_user = "";
+	if(url[0] != null){
+		sql_user = ", urlUserImg = '" + url[0] + "'";
+	}
 	try{	
-		String sql = "INSERT INTO Video(userID, title, detail, createDate, urlThumbnail, urlVideo, cntView, cntLike)"+
-						" VALUES (?, ?, ?, now(), ?, ?, 0, 0)";
+		String sql = "UPDATE User SET userName = ?, introTxt = ?" + sql_back + sql_user+" WHERE userID = " + userID;
+
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, userID);
-		pstmt.setString(2, title);
-		pstmt.setString(3, detail);
-		pstmt.setString(4, url[1]);
-		pstmt.setString(5, url[0]);
+		pstmt.setString(1, userName);
+		pstmt.setString(2, introTxt);
 		
 		pstmt.executeUpdate();
 	}catch(SQLException ex){
-		out.println("Video table insert fail");
+		out.println("User table insert fail");
 		out.println("SQLException: " + ex.getMessage());
 	}finally{
 		if(pstmt!=null)

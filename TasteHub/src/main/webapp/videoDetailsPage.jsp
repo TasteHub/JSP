@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+
+<%@ include file ="../process/insertView.jsp" %>
+<%@ include file ="../process/connect_DB.jsp" %>
 <%
     String title = "영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 ";  
     String viewMore = "더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 "; 
