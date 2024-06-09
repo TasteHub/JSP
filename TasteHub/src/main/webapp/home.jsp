@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
 <title>TasteHub</title>
 <link rel="shortcut icon" href="#"/>
 <style type="text/css">

@@ -72,19 +72,19 @@
         <div class="profile-btnArea" id="profileImg" style="background-image: url('<%=urlUserImg_h%>');"></div>
     </div>
     <div class="modal-header" id="modalHeader" style="display:none;">
-	<div class="userInfo-modal">
-		<img class="img-userInfo" alt="" src="<%=urlUserImg_h%>">
-		<div class="text-userInfo">
-			<p class="name-text"><%=userName_h %>
-			<p class="email-text"><%=email_h %>
-			<P class="cntSub-text">구독자 <%=cntSub_h %>명
+		<div class="userInfo-modal">
+			<img class="img-userInfo" alt="" src="<%=urlUserImg_h%>">
+			<div class="text-userInfo">
+				<p class="name-text"><%=userName_h %>
+				<p class="email-text"><%=email_h %>
+				<P class="cntSub-text">구독자 <%=cntSub_h %>명
+			</div>
+		</div>
+		<div class="logout-modal" id="logoutBtn">
+			<div class="img-logout" style="background-image: url('img/Header/btnLogout.png');"></div>
+			<p class="text-logout">로그아웃
 		</div>
 	</div>
-	<div class="logout-modal" id="logoutBtn">
-		<div class="img-logout" style="background-image: url('img/Header/btnLogout.png');"></div>
-		<p class="text-logout">로그아웃
-	</div>
-</div>
 </div>
 
 
