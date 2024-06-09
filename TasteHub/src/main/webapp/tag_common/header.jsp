@@ -61,7 +61,7 @@
         TasteHub
     </a>
     <form class="searchBar-header" name="searchbar" action="./search.jsp" method="get">
-        <input type="text" class="text-searchBar" name="searchTxt" placeholder="검색">
+        <input type="text" class="text-searchBar" name="searchTxt" placeholder="검색" autocomplete="off">
         <input type="submit" class="btnArea-searchBar" style="background-image: url('img/Header/btnSearch.png');">
     </form>
     <div class="btnArea-header">
