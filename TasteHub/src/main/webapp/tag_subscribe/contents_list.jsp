@@ -7,6 +7,8 @@
 <%@ include file ="../process/connect_DB.jsp" %>
 
 <%
+	int index = 0;
+
 	String title, urlthumbnail, userName, urluserImg, detail;
 	long cntView;
 	Date createDate;
@@ -25,6 +27,7 @@
 		stmt=conn.createStatement();
 		rs = stmt.executeQuery(sql);
 		while(rs.next()){
+			index++;
 			title = rs.getString("title");
 			if(title.length()>30)
 				title = title.substring(0,30) + "...";
@@ -74,5 +77,16 @@
 			if(conn!=null)
 				conn.close();
 		}
+	if(index==0){
+%>
+	<div class="noSub-contents">
+		<img class="img-noSub" alt="" src="img/Subscribe/noSubImg.png">
+		<div class="text-noSub">
+			<h2>구독한 채널이 없습니다.</h2>
+			<p>관심 있는 채널을 구독해보세요!
+		</div>
+	</div>
+<%
+	}
 %>
 </div>
