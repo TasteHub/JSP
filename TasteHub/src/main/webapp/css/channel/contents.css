@@ -12,21 +12,25 @@
 			width: 350px;
 			height: 206px;
 			border-radius: 15px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 		.detail-contents{
 			width: 350px;
 			height: 100px;
 			display: flex;
-			.userimg-detail{
+.userimg-detail{
 				width: 36px;
 				height: 36px;
 				margin-top: 12px;
 				margin-right: 12px;
 				border-radius: 18px;
+				background-size: cover;
+				background-position: center;
 			}
 			.text-detail{
 				width: 308px;
-				margin-top: 10px;
 				*{
 					margin:0px;
 				}
