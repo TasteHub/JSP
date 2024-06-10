@@ -160,7 +160,7 @@
     </div>
     <div class="profile" style="margin-left: 20px;;">
         <p class="user-detail"><%= userName_m %><br></p>
-        <p class="etc-detail">구독자 <%= cntSub_m %>명 · 동영상 100개</p>
+        <p class="etc-detail">구독자 <%= cntSub_m %>명 · 동영상 500개</p>
         <button id="subscribeButton" class="subs-btn">
             <img src="<%= bellimgSrc %>" alt="Bell Icon" style="width: 20px; height: 20px; margin-right: 5px;"> 구독중
         </button>

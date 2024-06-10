@@ -49,7 +49,7 @@
 		</a>
 		<div class="detail-contents">
 			<a href="channel.jsp?userID=<%=userID%>">
-				<img src="<%= urluserImg %>" alt="User Image" style="width: 37px; height: 37px; border-radius: 50%; object-fit: cover; margin-right: 10px; margin-top: 9px;">
+				<img src="<%= urluserImg %>" alt="User Image" style="width: 37px; height: 37px; border-radius: 50%;  margin-right: 10px; margin-top: 9px; object-fit: cover;">
 			</a>
 			<div class="text-detail">
 				<a href="videoDetailsPage.jsp?videoID=<%=videoID%>">
