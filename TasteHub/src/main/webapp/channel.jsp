@@ -60,7 +60,7 @@
     <title>TasteHub - VideoDetailsPage</title>
     <style>
         * {
-            font-family: "Roboto" , "Arial", "sans-serif";
+            font-family: "Roboto", "Arial", "sans-serif";
             text-decoration: none;
             color: black;
         }
