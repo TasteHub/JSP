@@ -41,8 +41,6 @@
 		rs_h.next();
 		userName_h = rs_h.getString("userName");
 		urlUserImg_h = rs_h.getString("urlUserImg");
-		if(urlUserImg_h == null)
-			urlUserImg_h = "img/Header/userIcon.png";
 		email_h = rs_h.getString("email");
 		cntSub_h = rs_h.getInt("cntSub");
 	}catch(SQLException ex){

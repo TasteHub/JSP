@@ -10,11 +10,12 @@ String password = request.getParameter("password");
 PreparedStatement pstmt = null;
 
 try {
-    String sql = "INSERT INTO User (userName, email, passwd) VALUES (?, ?, ?)";
+    String sql = "INSERT INTO User (userName, email, passwd, urlUserImg) VALUES (?, ?, ?, ?)";
     pstmt = conn.prepareStatement(sql);
     pstmt.setString(1, userName);
     pstmt.setString(2, email);
     pstmt.setString(3, password);
+    pstmt.setString(4, "img/Header/defaultIcon.png");
     
     int rowsAffected = pstmt.executeUpdate();
     
