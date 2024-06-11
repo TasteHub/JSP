@@ -14,6 +14,7 @@
     int videoID, userID;
     
     ResultSet rs = null;
+    
     Statement stmt = null;
     
     try{
