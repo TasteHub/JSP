@@ -8,12 +8,14 @@
 <%@ include file ="../process/connect_DB.jsp" %>
 <%
     String title, urlthumbnail, userName, urluserImg;
+
     long cntView;
     Date createDate;
     int videoID, userID;
     
     ResultSet rs = null;
     Statement stmt = null;
+    
     try{
         // URL에서 userID 가져오기
         String userIDParam = request.getParameter("userID");
