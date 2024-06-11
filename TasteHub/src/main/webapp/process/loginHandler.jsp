@@ -31,7 +31,7 @@ try {
         sessionObj.setAttribute("urlBackImg", backgroundImage);
         sessionObj.setAttribute("introTxt", introduce);
         
-        response.sendRedirect("../home.jsp");
+        response.sendRedirect("../home.do");
     } else {
         response.sendRedirect("../login.jsp");
     }

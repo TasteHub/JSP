@@ -54,11 +54,11 @@
 	}
 %>
 <div class="header-main">
-    <a class="homeBtn-header" href="home.jsp">
+    <a class="homeBtn-header" href="./home.do">
         <img alt="" src="img/Header/btnLogo.png" width="40px" height="" style="margin-right: 10px">
         TasteHub
     </a>
-    <form class="searchBar-header" name="searchbar" action="./search.jsp" method="get">
+    <form class="searchBar-header" name="searchbar" action="./search.do" method="post">
         <input type="text" class="text-searchBar" name="searchTxt" placeholder="검색" autocomplete="off">
         <input type="submit" class="btnArea-searchBar" style="background-image: url('img/Header/btnSearch.png');">
     </form>

@@ -14,14 +14,14 @@
 %>    
 <div class="sidebar-main">
 	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("home.jsp") ? select_color:"white")%>;">
-		<a class="btn-sidebar" href="home.jsp">
+		<a class="btn-sidebar" href="home.do">
 			<img alt="" src="img/Sidebar/btnHome.png" width="25px" height="25px">
 			<p class="txt-sidebar">홈</p>
 		</a>
 	</div>
 	<div class="div-sidebar" 
 	style="background-color: <%=(st[length-1].equals("subscribe_com.jsp")||st[length-1].equals("subscribe_list.jsp") ? select_color:"white")%>">
-		<a class="btn-sidebar" href="subscribe_com.jsp">
+		<a class="btn-sidebar" href="subscribe1.do">
 			<img alt="" src="img/Sidebar/btnSubList.png" width="27px" height="27px">
 			<p class="txt-sidebar">구독</p>
 		</a>
@@ -35,13 +35,13 @@
 		</a>
 	</div>
 	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("history.jsp") ? select_color:"white")%>">
-		<a class="btn-sidebar" href="history.jsp">
+		<a class="btn-sidebar" href="history.do">
 			<img alt="" src="img/Sidebar/btnVisit.png" width="27px" height="27px">
 			<p class="txt-sidebar">방문 기록</p>
 		</a>
 	</div>
 	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("likelist.jsp") ? select_color:"white")%>">
-		<a class="btn-sidebar" href="likelist.jsp">
+		<a class="btn-sidebar" href="likeList.do">
 			<img alt="" src="img/Sidebar/btnLikelist.png" width="27px" height="27px">
 			<p class="txt-sidebar">좋아요한 동영상</p>
 		</a>
