@@ -7,7 +7,7 @@
 <div class="contents-main">
 <%@ include file ="../process/connect_DB.jsp" %>
 <%
-    String title, urlthumbnail, userName, urluserImg;
+    String title, urlthumbnail,  userName, urluserImg;
 
     long cntView;
     Date createDate;
