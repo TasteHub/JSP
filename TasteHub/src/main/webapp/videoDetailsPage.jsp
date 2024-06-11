@@ -1,16 +1,67 @@
+<%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-
-<%@ include file ="../process/insertView.jsp" %>
-<%@ include file ="../process/connect_DB.jsp" %>
 <%
-    String title = "영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 ";  
-    String viewMore = "더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 더보기 "; 
-    String userimgSrc = "img/Header/profileImg.jpg";
+    // 데이터베이스 연결
+    Connection conn = null;
+    try {
+        Context initContext = new InitialContext();
+        DataSource ds = (DataSource)initContext.lookup("java:comp/env/jdbc/mysql");
+        conn = ds.getConnection();
+    } catch (Exception e) {
+        out.println("데이터베이스 연결 실패: " + e.getMessage());
+    }
+
     String bellimgSrc = "img/VideoDetail/bell_icon.png";
     String likeBefimgSrc = "img/VideoDetail/like_bef.png";
     String likeAftimgSrc = "img/VideoDetail/like_aft.png";
     String closeimgSrc = "img/VideoDetail/close.png";
+
+    int videoID = Integer.parseInt(request.getParameter("videoID"));
+
+    String title = ""; // 제목
+    String userName = ""; // 사용자 이름
+    int cntView = 0; // 조회수
+    String createDate = ""; // 생성일자
+    String urlUserImg = ""; // 사용자 이미지 URL
+    String viewMore = "";
+    String urlVideo = "";
+
+    try {
+        String sql = "SELECT v.urlVideo, v.title, v.cntView, v.createDate, v.detail, u.userName, u.urlUserImg FROM Video v JOIN User u ON v.userID = u.userID WHERE v.videoID = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, videoID);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            title = rs.getString("title");
+            userName = rs.getString("userName");
+            cntView = rs.getInt("cntView");
+            createDate = rs.getString("createDate");
+            urlUserImg = rs.getString("urlUserImg");
+            viewMore = rs.getString("detail");
+            urlVideo = rs.getString("urlVideo");
+        }
+    } catch (SQLException ex) {
+        out.println("데이터베이스에서 정보를 가져오는 도중 오류가 발생했습니다: " + ex.getMessage());
+    }
+
+    String logUserImg = ""; // 로그인한 사용자의 프로필 이미지 URL
+    String logUserID = ""; // 로그인한 사용자 ID
+    if (request.getSession().getAttribute("userID") != null) {
+        logUserID = (String) request.getSession().getAttribute("userID");
+        // 여기서 userID를 이용하여 데이터베이스에서 사용자의 프로필 이미지 URL을 가져옵니다.
+        try {
+            String sql = "SELECT urlUserImg FROM User WHERE userID = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, logUserID);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                logUserImg = rs.getString("urlUserImg");
+            }
+        } catch (SQLException ex) {
+            out.println("데이터베이스에서 로그인한 사용자의 프로필 이미지를 가져오는 도중 오류가 발생했습니다: " + ex.getMessage());
+        }
+    }
 %>
 <html>
 <head>
@@ -20,7 +71,7 @@
             font-family: "Roboto", "Arial", "sans-serif";
             text-decoration: none;
             color: black;
-        }
+        } 
         .body {
         	
         }
@@ -228,7 +279,7 @@
 		    border: none;
 		    cursor: pointer;
 		    margin-left: auto;
-		}
+		} 		
     </style>           
 </head>
 <body style="margin: 0;">
@@ -236,13 +287,19 @@
     <div style="display: flex;">
         <%@ include file="./tag_common/sidebar.jsp" %>
         <div class="content-wrapper">
-            <div class="video-contents"></div>
+            <div class="video-contents">
+                <video width="100%" height="500px"  controls>
+        		<source src="<%= urlVideo %>" type="video/mp4">
+    			</video>
+            </div>
             <div class="detail-contents">
-                <div class="userimg-detail"></div>
+                <div class="userimg-detail">
+                	<img src="<%= urlUserImg %>" alt="User Image" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                </div>
                 <div class="text-detail">
                     <p class="title-detail"><%= title %></p>
-                    <p class="user-detail">닉네임</p>
-                    <p class="etc-detail">000회 · 2개월 전</p>
+                    <p class="user-detail"><%= userName %></p>
+                    <p class="etc-detail"><%= cntView %>회 · <%= createDate %></p>
                 </div>
             </div>
             <div class="button-wrapper">
@@ -262,7 +319,7 @@
             <div class="comment-section">
                 <p class="comment-title">댓글</p>
                 <div class="comment-form">
-                    <img class="profile" alt="" src="<%= userimgSrc %>" />
+                    <img class="profile" alt="" src="<%= logUserImg %>" />
                     <input type="text" id="commentInput" class="comment-input" placeholder="댓글을 입력하세요..." />
                     <button id="commentButton" class="comment-button">등록</button>
                 </div>
@@ -272,30 +329,71 @@
     </div>
 
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var subscribeButton = document.getElementById('subscribeButton');
+        var likeButton = document.getElementById('likeButton');
+
+        // 구독 버튼 상태 복원
+        if (localStorage.getItem('isSubscribed') === 'true') {
+            subscribeButton.classList.add('subs-btn-clicked');
+            subscribeButton.innerHTML = '<img src="<%= bellimgSrc %>" alt="bell icon" style="width:25px; height:25px; margin-right:5px;">구독중';
+        }
+
+        // 좋아요 버튼 상태 복원
+        if (localStorage.getItem('isLiked') === 'true') {
+            likeButton.classList.add('like-btn-clicked');
+            likeButton.innerHTML = '<img src="<%= likeAftimgSrc %>" alt="like icon" style="width:20px; height:20px; margin-right:5px;">좋아요';
+        }
+    });
+    
         document.getElementById('subscribeButton').addEventListener('click', function() {
             var button = this;
             if (button.classList.contains('subs-btn-clicked')) {
                 button.classList.remove('subs-btn-clicked');
                 button.innerHTML = '구독';
+                localStorage.setItem('isSubscribed', 'false');
             } else {
                 button.classList.add('subs-btn-clicked');
                 button.innerHTML = '<img src="<%= bellimgSrc %>" alt="bell icon" style="width:25px; height:25px; margin-right:5px;">구독중';
+                localStorage.setItem('isSubscribed', 'true');
             }
         });
         
         document.getElementById('likeButton').addEventListener('click', function() {
             var button = this;
-            if (button.classList.contains('like-btn-clicked')) {
-                button.classList.remove('like-btn-clicked');
-                button.innerHTML = '<img src="<%= likeBefimgSrc %>" alt="like icon" style="width:20px; height:20px; margin-right:5px;">좋아요';
-            } else {
-                button.classList.add('like-btn-clicked');
-                button.innerHTML = '<img src="<%= likeAftimgSrc %>" alt="like icon" style="width:20px; height:20px; margin-right:5px;">좋아요';
-            }
+            var videoID = '<%= videoID %>';
+            var userID = '<%= session.getAttribute("userID") %>';
+            
+            // Ajax 요청을 보냄
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // 요청이 성공적으로 처리되었을 때 버튼 상태를 변경
+                        if (button.classList.contains('like-btn-clicked')) {
+                            button.classList.remove('like-btn-clicked');
+                            button.innerHTML = '<img src="<%= likeBefimgSrc %>" alt="like icon" style="width:20px; height:20px; margin-right:5px;">좋아요';
+                        } else {
+                            button.classList.add('like-btn-clicked');
+                            button.innerHTML = '<img src="<%= likeAftimgSrc %>" alt="like icon" style="width:20px; height:20px; margin-right:5px;">좋아요';
+                        }
+                    } else {
+                        // 요청이 실패한 경우 에러 처리
+                        console.error('서버 요청에 실패했습니다.');
+                    }
+                }
+            };
+            // Ajax 요청 설정
+            xhr.open('POST', 'process/like.jsp');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // 요청 본문 설정
+            var data = 'videoID=' + encodeURIComponent(videoID) + '&userID=' + encodeURIComponent(userID);
+            xhr.send(data);
         });
 
+
         document.getElementById('commentButton').addEventListener('click', function() {
-            var userImgSrc = '<%= userimgSrc %>';
+            var userImgSrc = '<%= logUserImg %>';
             var commentInput = document.getElementById('commentInput');
             var commentText = commentInput.value.trim();
 
@@ -342,5 +440,6 @@
             }
         });
     </script>
+
 </body>
 </html>
