@@ -22,8 +22,6 @@
 	//git에 키값이 안올라가서 임의로 부여(사용시 변경해야함)
 	AwsBasicCredentials awsCreds = AwsBasicCredentials.create("AccessKey",
 			"PrivateKey");
-	/*AwsBasicCredentials awsCreds = AwsBasicCredentials.create("AKIAW3MED24CWYJI3R66",
-			   "qtJEe0Fjsb4QSZBQiyT0DDqZZryHnm0sDmN4jKD+");*/
 	String bucketname = "bucket-tastehub";
 	S3Client client = S3Client.builder().region(region)
             .credentialsProvider(StaticCredentialsProvider.create(awsCreds))

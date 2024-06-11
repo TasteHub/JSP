@@ -13,7 +13,8 @@
     Date createDate;
     int videoID, userID;
     
-    ResultSet rs = null; 
+    ResultSet rs = null;
+    
     Statement stmt = null;
     
     try{
