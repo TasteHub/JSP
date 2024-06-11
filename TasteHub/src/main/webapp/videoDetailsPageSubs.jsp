@@ -65,7 +65,7 @@
 %>
 <html>
 <head>
-    <title>TasteHub - VideoDetailsPage</title>
+    <title>TasteHub - VideoDetailsPageSubs</title>
     <style>
         * {
             font-family: "Roboto", "Arial", "sans-serif";
@@ -140,7 +140,7 @@
             margin-top: 10px;
         }
 
-        .subs-btn, .like-btn {
+        .subs-btn-clicked, .like-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -307,8 +307,8 @@
                 </div>
             </div>
             <div class="button-wrapper">
-            <a href="videoDetailsPageSubs?videoID=<%= videoID %>">
-                <button id="subscribeButton" class="subs-btn">구독</button>
+            <a href="videoDetailsPage?videoID=<%= videoID %>">
+                <button id="subscribeButton" class="subs-btn-clicked">구독중</button>
             </a>
                 <button id="likeButton" class="like-btn">
                     <img src="<%= likeBefimgSrc %>" alt="like icon" style="width:20px; height:20px; margin-right:5px;">좋아요
