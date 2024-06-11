@@ -70,6 +70,10 @@ public class Controller extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/likeList.do");
 			rd.forward(request, response);
 		}
+		else {
+			RequestDispatcher rd = request.getRequestDispatcher("./errNoPage");;
+			rd.forward(request, response);
+		}
 		
 	}
 	public void requestHomeVideo(HttpServletRequest request) {

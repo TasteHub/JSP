@@ -18,10 +18,10 @@
 	<h1>Welcome<br>Back!</h1>
 
  	<div class="i-login">
-	    <a href="home.jsp" class="homeBtn-login">
+	    <div class="homeBtn-login">
 	        <img alt="" src="img/Header/btnLogo.png" class="homeBtn-img">
 	        <span>TasteHub</span>
-	    </a>
+	    </div>
 	    <p class="word-login">Login
 		<form action="process/loginHandler.jsp" method="post">
         <div class="input-login">

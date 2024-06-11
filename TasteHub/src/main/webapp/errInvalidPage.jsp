@@ -24,8 +24,8 @@ color: black;
 				<p class="text-title">TasteHub</p>
 			</a>
 			<img class="img-contents" alt="" src="">
-			<h2>404 ERROR</h2>
-		    <p class="text-contents">요청하신 페이지를 찾을 수 없습니다.</p>
+			<h2>500 ERROR</h2>
+		    <p class="text-contents">잘못된 접근입니다. 주소를 다시 확인하세요.</p>
 		    <form class="inputGroup" name="searchbar" action="./search.do" method="get">
 			    <input type="text" required="" name="searchTxt" autocomplete="off" minlength="2">
 			    <label for="name">검색</label>
