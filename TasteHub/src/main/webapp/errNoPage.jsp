@@ -15,10 +15,10 @@ color: black;
 }
 </style>
 </head>
-<body style="margin: 0; background-image: url('./img/errpage/errPageBack.jpg');">
+<body style="margin: 0; background-image: url('./img/errpage/errPageBack.png');">
 	<div class="errpage-container" style="">
 		<div class="errpage-contents">
-			<a class="title-contents" href="home.jsp">
+			<a class="title-contents" href="./home.do">
 				<img class="logo-title" alt="" src="./img/Header/btnLogo.png" width="40px" height="28px" >
 				<p class="text-title">TasteHub</p>
 			</a>
@@ -26,7 +26,7 @@ color: black;
 			<%--	<p class="url-contents"> <%=request.getRequestURL()%>?<%=request.getQueryString() %> 	--%>
 			<h2>404 ERROR</h2>
 		    <p class="text-contents">요청하신 페이지를 찾을 수 없습니다.</p>
-		    <form class="inputGroup" name="searchbar" action="./search.jsp" method="get">
+		    <form class="inputGroup" name="searchbar" action="./search.do" method="get">
 			    <input type="text" required="" name="searchTxt" autocomplete="off" minlength="2">
 			    <label for="name">검색</label>
 			</form>

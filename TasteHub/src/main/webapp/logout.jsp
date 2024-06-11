@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="javax.servlet.http.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +13,7 @@
         currentSession.invalidate(); 
     }
     
-    response.sendRedirect("home.jsp");
+    response.sendRedirect("home.do");
 %>
 </body>
 </html>
