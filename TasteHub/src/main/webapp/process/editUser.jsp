@@ -18,6 +18,7 @@
 %>
 <%	
 	Region region = Region.AP_NORTHEAST_2;
+
 	//git에 키값이 안올라가서 임의로 부여(사용시 변경해야함)
 	AwsBasicCredentials awsCreds = AwsBasicCredentials.create("AccessKey",
 			"PrivateKey");
