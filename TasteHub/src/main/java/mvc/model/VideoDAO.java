@@ -264,7 +264,7 @@ public class VideoDAO {
 		sql = "SELECT WV.userID, WV.videoID, urlThumbnail, title, userName, cntView, createDate, detail "
 				+ "FROM ( SELECT likeDate, V.videoID, V.userID, title, urlThumbnail, cntView, createDate, detail "
 				+ "FROM LikeBtn as L, Video as V WHERE L.userID = " + input + " AND V.videoID = L.videoID "
-				+ "ORDER BY UNIX_TIMESTAMP(likeDate) desc LIMIT 0,30) as WV, User as U WHERE U.userID = WV.userID;";
+				+ ") as WV, User as U WHERE U.userID = WV.userID ORDER BY UNIX_TIMESTAMP(likeDate) DESC;";
 		ArrayList<VideoDTO> list = new ArrayList<VideoDTO>();
 		try {
 			conn = DBConnection.getConnection();
@@ -371,7 +371,7 @@ public class VideoDAO {
 	       return subsChannelList;
 	   }
 
-	// likelist.do
+	// MyPage.do
 		public ArrayList<VideoDTO> getMyVideoList(String input) {
 			Connection conn = null;
 			PreparedStatement pstmt = null;

@@ -30,12 +30,14 @@ try {
     java.util.Date now = new java.util.Date();
     java.sql.Timestamp likeDate = new java.sql.Timestamp(now.getTime());
 
-    String sql = "INSERT INTO LikeBtn (userID, videoID, likeDate) VALUES (?, ?, ?)";
+    String sql = "INSERT INTO LikeBtn (userID, videoID, likeDate) VALUES (?, ?, now());"
+    			+"UPDATE Video SET cntLike = (SELECT count(DISTINCT LikeBtn.userID) FROM LikeBtn where LikeBtn.videoID = ?) WHERE videoID = ?;";
     pstmt = conn.prepareStatement(sql);
     pstmt.setInt(1, userID);
     pstmt.setInt(2, videoID);
-    pstmt.setTimestamp(3, likeDate);
-
+    pstmt.setInt(3, videoID);
+    pstmt.setInt(4, videoID);
+    
     int result = pstmt.executeUpdate();
 
     if (result > 0) {

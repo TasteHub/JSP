@@ -27,11 +27,14 @@ try {
 PreparedStatement pstmt = null;
 
 try {
-    String sql = "DELETE FROM Subscribe WHERE userID = ? AND userSubID = ?";
+    String sql = "DELETE FROM Subscribe WHERE userID = ? AND userSubID = ?;"
+   				+"UPDATE User SET cntSub = (SELECT count(DISTINCT Subscribe.userID) FROM Subscribe where userSubID = ?) WHERE userID = ?;";
     pstmt = conn.prepareStatement(sql);
     pstmt.setInt(1, userID);
     pstmt.setInt(2, userSubID);
-
+    pstmt.setInt(3, userSubID);
+    pstmt.setInt(4, userSubID);
+    
     int result = pstmt.executeUpdate();
 
     if (result > 0) {

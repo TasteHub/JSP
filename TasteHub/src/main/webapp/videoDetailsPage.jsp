@@ -1,6 +1,7 @@
 <%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ include file="./process/insertView.jsp" %>
 <%
     // 데이터베이스 연결
     Connection conn = null;
@@ -177,7 +178,7 @@
             flex-direction: column;
             margin-left: 10px;
             margin-top: 30px;
-            width: 85%;
+            min-width: calc(100% - 290px);
 			overflow-y: scroll;
 			box-sizing: border-box;
 			height: calc(100vh - 80px);

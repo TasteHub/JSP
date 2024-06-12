@@ -8,11 +8,14 @@ int videoID = Integer.parseInt(request.getParameter("videoID"));
 PreparedStatement pstmt = null;
 
 try {
-    String sql = "DELETE FROM LikeBtn WHERE userID = ? AND videoID = ?";
+    String sql = "DELETE FROM LikeBtn WHERE userID = ? AND videoID = ?;"
+    			+"UPDATE Video SET cntLike = (SELECT count(DISTINCT LikeBtn.userID) FROM LikeBtn where LikeBtn.videoID = ?) WHERE videoID = ?;";
     pstmt = conn.prepareStatement(sql);
     pstmt.setInt(1, userID);
     pstmt.setInt(2, videoID);
-
+    pstmt.setInt(3, videoID);
+    pstmt.setInt(4, videoID);
+    
     int result = pstmt.executeUpdate();
 
     if (result > 0) {
