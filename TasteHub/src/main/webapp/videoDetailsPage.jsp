@@ -18,7 +18,7 @@
     String closeimgSrc = "img/VideoDetail/close.png";
 
     int videoID = Integer.parseInt(request.getParameter("videoID"));
-
+    
     String title = ""; // 제목
     String userName = ""; // 사용자 이름
     int cntView = 0; // 조회수
@@ -27,9 +27,10 @@
     String viewMore = "";
     String urlVideo = "";
     String introTxt = "";
+    int upUserID = 0;
 
     try {
-        String sql = "SELECT v.urlVideo, v.title, v.cntView, v.createDate, v.detail, u.userName, u.introTxt, u.urlUserImg FROM Video v JOIN User u ON v.userID = u.userID WHERE v.videoID = ?";
+        String sql = "SELECT v.urlVideo, v.title, v.cntView, v.createDate, v.detail, v.userID, u.userName, u.introTxt, u.urlUserImg FROM Video v JOIN User u ON v.userID = u.userID WHERE v.videoID = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, videoID);
         ResultSet rs = stmt.executeQuery();
@@ -42,6 +43,7 @@
             viewMore = rs.getString("detail");
             urlVideo = rs.getString("urlVideo");
             introTxt = rs.getString("introTxt");
+            upUserID = rs.getInt("userID");
         }
     } catch (SQLException ex) {
         out.println("데이터베이스에서 정보를 가져오는 도중 오류가 발생했습니다: " + ex.getMessage());
@@ -71,9 +73,10 @@
     boolean substate = false; 
 
     try {
-        String sql = "SELECT * FROM Subscribe WHERE userSubID = ?";
+    	String sql = "SELECT * FROM Subscribe WHERE userSubID = ? AND userID = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, userID);
+        stmt.setString(2, userID);
+        stmt.setInt(1, upUserID);
         ResultSet rs = stmt.executeQuery();
 
         if (rs.next()) {
@@ -255,23 +258,22 @@
     			</video>
             </div>
             <div class="detail-contents">
-                <a href="myPage.jsp">class="userimg-detail">
+                <a href="channel.jsp?userID=<%= upUserID %>" class="userimg-detail">
                 	<img src="<%= urlUserImg %>" alt="User Image" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
                 </a>
                 <div class="text-detail">
                     <p class="title-detail"><%= title %></p>
                     <p class="user-detail"><%= userName %></p>
                     <p class="etc-detail"><%= cntView %>회 · <%= createDate %></p>
-                    <pre class="introduce-detail"><%=introTxt %></pre>
                 </div>
             </div>
-            <div class="button-wrapper">         
+	        <div class="button-wrapper">         
 			    <% if (substate) { %>
-			        <a href="process/removeSubscribe.jsp?videoID=<%= videoID %>&userID=<%= logUserID %>&userSubID=<%= userID %>">
+			        <a href="process/removeSubscribe.jsp?videoID=<%= videoID %>&userID=<%= userID %>&userSubID=<%= upUserID %>">
 			            <button id="subscribeButton" class="subs-btn-clicked">구독중</button>
 			        </a>
 			    <% } else { %>
-			        <a href="process/addSubscribe.jsp?videoID=<%= videoID %>&userID=<%= logUserID %>&userSubID=<%= userID %>">
+			        <a href="process/addSubscribe.jsp?videoID=<%= videoID %>&userID=<%= userID %>&userSubID=<%= upUserID %>">
 			            <button id="subscribeButton" class="subs-btn">구독</button>
 			        </a>
 			    <% } %>
@@ -292,7 +294,7 @@
             </div>
             <div class="view-more-section">
                 <div id="viewMoreContent" class="view-more-content">
-                    <%= viewMore %>
+                    <pre><%= viewMore %></pre>
                 </div>
             </div>
         </div>
