@@ -1,3 +1,6 @@
+<%@page import="javax.sql.*"%>
+<%@page import="javax.naming.*"%>
+<%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <link href="css/common/sidebar.css?after" rel="stylesheet" type="text/css">    
@@ -5,7 +8,19 @@
 	private String url, page;
 	private String[] st;
 	private String select_color = "#FFAC5350";
-	int length;
+	int length,sidebarID;
+%>
+<%
+	Connection conn_s = null;
+
+	try {
+		Context init = new InitialContext();
+		DataSource ds = (DataSource)init.lookup("java:comp/env/jdbc/mysql");
+		conn_s = ds.getConnection();
+	} catch (Exception e) {
+		out.println("연결 실패");
+		out.println(e.getMessage());
+	}
 %>
 <%
 	url = request.getRequestURI();
@@ -51,16 +66,38 @@
 	
 	<p class="subText-sidebar">구독</p>
 	<%
-	for(int i = 0; i < 9; i++){
-	%>
-	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("url주소") ? select_color:"white")%>
-	border-radius: 10px; margin-bottom: 5px; margin-right: 7px">
-		<a class="btn-sidebar" href="channel.jsp">
-			<div class="subImg-btn" style="background-image: url(''); background-color: gray;"></div>
-			<p class="txt-sidebar">채널 <%= i+1 %></p>
+	if(session.getAttribute("userID") != null)
+		sidebarID = Integer.parseInt((String)session.getAttribute("userID"));
+	ResultSet rs_s = null;
+	Statement stmt_s = null;
+	String userName_s = "", urlUserImg_s = "";
+	int userSubID = 0;
+	try{	
+		String sql_s = "SELECT userSubID, userName, urlUserImg FROM Subscribe as s, User as u" 
+				+ " WHERE userSubID = u.userID and s.userID = " + sidebarID;
+		stmt_s = conn_s.prepareStatement(sql_s);
+		rs_s = stmt_s.executeQuery(sql_s);
+		while(rs_s.next()){
+		userSubID = rs_s.getInt("userSubID");
+		userName_s = rs_s.getString("userName");
+		urlUserImg_s = rs_s.getString("urlUserImg");
+%>
+	<div class="div-sidebar" style="border-radius: 10px; margin-bottom: 5px; margin-right: 7px">
+		<a class="btn-sidebar" href="channel.jsp?userID=<%=userSubID%>">
+			<div class="subImg-btn" style="background-image: url('<%=urlUserImg_s %>'); background-color: gray;"></div>
+			<p class="txt-sidebar"><%= userName_s %></p>
 		</a>
 	</div>
 	<%
+		}
+	}catch(SQLException ex){
+		out.println("User table select fail");
+		out.println("SQLException: " + ex.getMessage());
+	}finally{
+		if(stmt_s!=null)
+			stmt_s.close();
+		if(conn_s!=null)
+			conn_s.close();
 	}
 	%>
 	<a class="btn-sidebar" href="subscribe.do" style="border-radius: 10px; margin-bottom: 5px; margin-right: 7px">
