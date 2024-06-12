@@ -63,6 +63,42 @@
         }
     }
 %>
+<%
+	String userID = (String) session.getAttribute("userID");
+    boolean substate = false; 
+
+    try {
+        String sql = "SELECT * FROM Subscribe WHERE userSubID = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, userID);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            substate = true;
+        }
+    } catch (SQLException ex) {
+        out.println("구독 정보를 확인하는 도중 오류가 발생했습니다: " + ex.getMessage());
+    }
+%>
+
+<%
+    boolean substateL = false; 
+
+    try {
+        String sql = "SELECT * FROM LikeBtn WHERE userID = ? AND videoID = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, userID);
+        stmt.setInt(2, videoID);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            substateL = true;
+        }
+    } catch (SQLException ex) {
+        out.println("좋아요 정보를 확인하는 도중 오류가 발생했습니다: " + ex.getMessage());
+    }
+%>
+
 <html>
 <head>
     <title>TasteHub - VideoDetailsPage</title>
@@ -140,7 +176,7 @@
             margin-top: 10px;
         }
 
-        .subs-btn, .like-btn {
+        .subs-btn, .like-btn, .subs-btn-clicked, .like-btn-clicked {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -177,6 +213,7 @@
         
         .view-more-section {
             margin-top: 20px;
+            margin-bottom: 50px;
             max-width: 84%;
             background-color: #e9ecef;
             border-radius: 10px;
@@ -186,104 +223,15 @@
         .view-more-content {
             font-size: 15px;
         }
-        
-        .view-more-button {
-            display: inline-block;
-            font-size: 13px;
-            background-color: #e9ecef;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            color: #007bff;
-            margin-top: 5px;
-        }
-        
-        .comment-section {
-            max-width: 90%;
-            margin-top: 30px;
-        }
-
-        .comment-title {
-            font-size: 25px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .comment-form {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
 
         .profile {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             margin-right: 10px;
+            object-fit: cover;
         }
 
-        .comment-input {
-            width: 89%;
-            padding: 10px;
-            font-size: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-
-        .comment-button {
-            font-size: 13px;
-            background-color: white;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-        }
-
-        .comments-container {
-            margin: 0 auto;
-            margin-top: 20px;
-        }
-
-        .comment {
-            display: flex;
-    		position: relative;
-            display: relative;
-            align-items: flex-start;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        .comment .profile {
-            margin-right: 15px;
-        }
-
-        .comment-content {
-            padding: 10px 15px;
-            position: relative;
-            flex: 1; 
-            margin-bottom: 30px;
-        }
-
-        .comment-content p {
-            margin: 0;
-        }
-
-		.close-button {
-		    position: absolute;
-		    top: 0;
-		    right: 30;
-		    width: 20px;
-		    height: 20px;
-		    background: url('<%= closeimgSrc %>') no-repeat center center;
-		    background-size: contain;
-		    border: none;
-		    cursor: pointer;
-		    margin-left: auto;
-		} 		
-		
-		.profile {
-			object-fit: cover;
-		}
     </style>           
 </head>
 <body style="margin: 0;">
@@ -306,84 +254,38 @@
                     <p class="etc-detail"><%= cntView %>회 · <%= createDate %></p>
                 </div>
             </div>
-            <div class="button-wrapper">
-            <a href="videoDetailsPageSubs?videoID=<%= videoID %>">
-                <button id="subscribeButton" class="subs-btn">구독</button>
-            </a>
-                <button id="likeButton" class="like-btn">
-                    <img src="<%= likeBefimgSrc %>" alt="like icon" style="width:20px; height:20px; margin-right:5px;">좋아요
-                </button>
+            <div class="button-wrapper">         
+                <% if (substate) { %>
+                    <a href="process/removeSubscribe.jsp?videoID=<%= videoID %>&userID=<%= logUserID %>&userSubID=<%= userID %>">
+                        <button id="subscribeButton" class="subs-btn-clicked">구독중</button>
+                    </a>
+                <% } else { %>
+                    <a href="process/addSubscribe.jsp?videoID=<%= videoID %>&userID=<%= logUserID %>&userSubID=<%= userID %>">
+                        <button id="subscribeButton" class="subs-btn">구독</button>
+                    </a>
+                <% } %>
+	            
+	            <% if (substateL) { %>
+		            <a href="process/removeLike.jsp?videoID=<%= videoID %>&userID=<%= logUserID %>">
+		            	<button id="likeButton" class="like-btn-clicked">
+	                    	<img src="<%= likeAftimgSrc %>" alt="like icon" style="width:20px; height:20px; margin-right:5px;">좋아요
+	                	</button>
+		        	</a>
+	            <% } else { %>
+		            <a href="process/addLike.jsp?videoID=<%= videoID %>&userID=<%= logUserID %>">
+		                <button id="likeButton" class="like-btn">
+	                    	<img src="<%= likeBefimgSrc %>" alt="like icon" style="width:20px; height:20px; margin-right:5px;">좋아요
+	                	</button>
+		            </a>
+	            <% } %>
             </div>
             <div class="view-more-section">
                 <div id="viewMoreContent" class="view-more-content">
-                    <%= viewMore.length() > 80 ? viewMore.substring(0, 80) + "..." : viewMore %>
+                    <%= viewMore %>
                 </div>
-                <% if (viewMore.length() > 80) { %>
-                    <button id="viewMoreButton" class="view-more-button">더보기</button>
-                <% } %>
-            </div>
-            <div class="comment-section">
-                <p class="comment-title">댓글</p>
-                <div class="comment-form">
-                    <img class="profile" alt="" src="<%= logUserImg %>" />
-                    <input type="text" id="commentInput" class="comment-input" placeholder="댓글을 입력하세요..." />
-                    <button id="commentButton" class="comment-button">등록</button>
-                </div>
-                <div id="commentsContainer" class="comments-container"></div>
             </div>
         </div>
     </div>
-
-    <script>   
-        document.getElementById('commentButton').addEventListener('click', function() {
-            var userImgSrc = '<%= logUserImg %>';
-            var commentInput = document.getElementById('commentInput');
-            var commentText = commentInput.value.trim();
-
-            if (commentText) {
-                var commentsContainer = document.getElementById('commentsContainer');
-
-                var commentDiv = document.createElement('div');
-                commentDiv.classList.add('comment');
-
-                var profileImg = document.createElement('img');
-                profileImg.classList.add('profile');
-                profileImg.src = userImgSrc;
-                profileImg.style.objectFit = 'cover';
-                commentDiv.appendChild(profileImg);
-
-                var commentContent = document.createElement('div');
-                commentContent.classList.add('comment-content');
-                var commentParagraph = document.createElement('p');
-                commentParagraph.textContent = commentText;
-                commentContent.appendChild(commentParagraph);
-                commentDiv.appendChild(commentContent);
-
-                var closeButton = document.createElement('button');
-                closeButton.classList.add('close-button');
-                closeButton.addEventListener('click', function() {
-                    commentsContainer.removeChild(commentDiv);
-                });
-                commentContent.appendChild(closeButton);
-
-                commentsContainer.prepend(commentDiv);
-
-                commentInput.value = '';
-            } 
-        });
-
-        document.getElementById('viewMoreButton').addEventListener('click', function() {
-            var viewMoreContent = document.getElementById('viewMoreContent');
-            var viewMoreButton = document.getElementById('viewMoreButton');
-            if (viewMoreButton.innerText === '더보기') {
-                viewMoreContent.innerText = '<%= viewMore %>';
-                viewMoreButton.innerText = '접기';
-            } else {
-                viewMoreContent.innerText = '<%= viewMore.length() > 80 ? viewMore.substring(0, 80) + "..." : viewMore %>';
-                viewMoreButton.innerText = '더보기';
-            }
-        });
-    </script>
 
 </body>
 </html>
