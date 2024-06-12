@@ -8,7 +8,7 @@
 	private String url, page;
 	private String[] st;
 	private String select_color = "#FFAC5350";
-	int length;
+	int length,sidebarID;
 %>
 <%
 	Connection conn_s = null;
@@ -65,7 +65,8 @@
 	
 	<p class="subText-sidebar">구독</p>
 	<%
-	int sidebarID = Integer.parseInt((String)session.getAttribute("userID"));
+	if(session.getAttribute("userID") != null)
+		sidebarID = Integer.parseInt((String)session.getAttribute("userID"));
 	ResultSet rs_s = null;
 	Statement stmt_s = null;
 	String userName_s = "", urlUserImg_s = "";
