@@ -55,8 +55,25 @@
     } finally {
         if(stmt_m!=null)
             stmt_m.close();
-        if(conn_m!=null)
-            conn_m.close();
+    }
+%>
+
+<%
+    String userID = (String) session.getAttribute("userID");
+    boolean substate = false; 
+
+    try {
+    	String sql = "SELECT * FROM Subscribe WHERE userSubID = ? AND userID = ?";
+        PreparedStatement stmt = conn_m.prepareStatement(sql);
+        stmt.setString(2, userID);
+        stmt.setInt(1, visitingUserID);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            substate = true;
+        }
+    } catch (SQLException ex) {
+        out.println("구독 정보를 확인하는 도중 오류가 발생했습니다: " + ex.getMessage());
     }
 %>
 <html>
@@ -172,9 +189,19 @@
         <p class="user-detail"><%= userName_m %><br></p>
         <p class="etc-detail"><%= email %> · 구독자 <%= cntSub_m %>명</p>
         <pre class="introduce-detail"><%=introTxt_m %></pre>
-        <button id="subscribeButton" class="subs-btn">
-            <img src="<%= bellimgSrc %>" alt="Bell Icon" style="width: 20px; height: 20px; margin-right: 5px;"> 구독중
-        </button>
+	        <div class="subs-btn">         
+			    <% if (substate) { %>
+			        <a href="process/removeSubscribe.jsp?&userID=<%= userID %>&userSubID=<%= visitingUserID %>&state=1" 
+			        style="width: 100%; text-align: center;">
+			        	구독중
+			        </a>
+			    <% } else { %>
+			        <a href="process/addSubscribe.jsp?&userID=<%= userID %>&userSubID=<%= visitingUserID %>&state=1"
+			        style="width: 100%; text-align: center;">
+			            구독
+			        </a>
+			    <% } %>
+			    </div>
     </div>
 </div>
             <div class="subscribe-hr"></div>
@@ -184,6 +211,10 @@
             </div>
         </div>
     </div>
+    <% 
+        if(conn_m!=null)
+            conn_m.close();
+    %>
 <script>
     document.getElementById('subscribeButton').addEventListener('click', function() {
         var button = this;

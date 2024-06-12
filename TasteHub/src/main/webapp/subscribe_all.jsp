@@ -13,7 +13,6 @@ color: black;
 }
 </style>
 
-
 </head>
 
 <body style="margin: 0; overflow-y: hidden">
@@ -23,5 +22,4 @@ color: black;
 		<%@ include file="./tag_subscribe/contents_channel.jsp" %>
 	</div>
 </body>
-
 </html>

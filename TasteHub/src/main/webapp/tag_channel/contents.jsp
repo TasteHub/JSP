@@ -11,7 +11,7 @@
 
     long cntView;
     Date createDate;
-    int videoID, userID;
+    int videoID, userID2;
     
     ResultSet rs = null;
     Statement stmt = null;
@@ -41,7 +41,7 @@
             createDate = rs.getDate("createDate");
             urluserImg = rs.getString("urluserImg");
             videoID = rs.getInt("videoID");
-            userID = rs.getInt("userID");
+            userID2 = rs.getInt("userID");
 %>
    <div class="content-contents">
 		<a href="videoDetailsPage.jsp?videoID=<%=videoID%>">
@@ -50,14 +50,14 @@
 			background-position: center; margin-bottom: -20px; " ></div>
 		</a>
 		<div class="detail-contents">
-			<a href="channel.jsp?userID=<%=userID%>">
+			<a href="channel.jsp?userID=<%=userID2%>">
 				<img src="<%= urluserImg %>" alt="User Image" style="width: 37px; height: 37px; border-radius: 50%;  margin-right: 10px; margin-top: 9px; object-fit: cover;">
 			</a>
 			<div class="text-detail">
 				<a href="videoDetailsPage.jsp?videoID=<%=videoID%>">
 					<p class="title-detail"><%=title %></p>
 				</a>
-				<a href="channel.jsp?userID=<%=userID%>">
+				<a href="channel.jsp?userID=<%=userID2%>">
 					<p class="user-detail"><%=userName %></p>
 				</a>
 				<p class="etc-detail"><%=cntView %>회 · <%=createDate %></p>

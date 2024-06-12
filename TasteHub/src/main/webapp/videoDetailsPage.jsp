@@ -137,7 +137,7 @@
             border-radius: 50%;
             margin-right: 12px;
             background-color: gray;
-            margin-top: -35px;
+            margin-top: 0px;
         }
         
         .text-detail {
@@ -299,6 +299,10 @@
             </div>
         </div>
     </div>
-
+<%
+    if(conn!=null){
+        conn.close();
+    }
+%>
 </body>
 </html>

@@ -39,13 +39,21 @@ try {
     } else {
         out.println("구독 제거에 실패했습니다.");
     }
-
-    response.sendRedirect("../videoDetailsPage.jsp?videoID=" + request.getParameter("videoID"));
+	
 
 } catch (SQLException ex) {
     out.println("구독 제거 도중 오류가 발생했습니다: " + ex.getMessage());
 } finally {
+	
     if (pstmt != null) try { pstmt.close(); } catch (SQLException ignore) {}
     if (conn != null) try { conn.close(); } catch (SQLException ignore) {}
+    
+    if (request.getParameter("videoID") != null)
+    	response.sendRedirect("../videoDetailsPage.jsp?videoID=" + request.getParameter("videoID")); 
+    else if (request.getParameter("state").equals("2"))
+    	response.sendRedirect("../subscribe.do"); 
+    else if (request.getParameter("state").equals("1"))
+    	response.sendRedirect("../channel.jsp?userID=" + request.getParameter("userSubID")); 
+    	
 }
 %>
