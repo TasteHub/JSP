@@ -74,6 +74,11 @@ public class Controller extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("./subscribe_all.jsp");
 			rd.forward(request, response);
 		}
+		else if(command.equals("/myVideoList.do")) {//like 삭제
+			requestMyVideo(request, id);
+			RequestDispatcher rd = request.getRequestDispatcher("./myPage.jsp");
+			rd.forward(request, response);
+		}
 		else {
 			RequestDispatcher rd = request.getRequestDispatcher("./errNoPage");;
 			rd.forward(request, response);
@@ -148,5 +153,12 @@ public class Controller extends HttpServlet {
 		
 		request.setAttribute("videolist", videolist);
 	}
-
+	public void requestMyVideo(HttpServletRequest request, String id) {
+		VideoDAO dao = VideoDAO.getInstance();
+		ArrayList<VideoDTO> videolist = new ArrayList<VideoDTO>();
+		
+		videolist = dao.getMyVideoList(id);
+		
+		request.setAttribute("videolist", videolist);
+	}
 }
