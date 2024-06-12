@@ -121,7 +121,6 @@ public class Controller extends HttpServlet {
 		
 		String videoID = request.getParameter("videoID");
 		dao.delHistoryList(userID, videoID);
-
 	}
 	public void requestLikeVideo(HttpServletRequest request, String id) {
 		VideoDAO dao = VideoDAO.getInstance();

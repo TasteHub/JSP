@@ -332,8 +332,6 @@ public class VideoDAO {
 		}
 	}
 	
-	 
-	
 	public ArrayList<VideoDTO> subsChannelList(String userID) {
 	    Connection conn = null;
 	    PreparedStatement pstmt = null;

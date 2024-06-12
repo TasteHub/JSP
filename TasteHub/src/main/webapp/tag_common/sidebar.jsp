@@ -54,6 +54,7 @@
 			<img alt="" src="img/Sidebar/btnVisit.png" width="27px" height="27px">
 			<p class="txt-sidebar">방문 기록</p>
 		</a>
+		
 	</div>
 	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("likelist.jsp") ? select_color:"white")%>">
 		<a class="btn-sidebar" href="likeList.do">

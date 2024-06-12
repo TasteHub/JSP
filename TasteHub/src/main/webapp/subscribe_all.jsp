@@ -23,4 +23,5 @@ color: black;
 		<%@ include file="./tag_subscribe/contents_channel.jsp" %>
 	</div>
 </body>
+
 </html>

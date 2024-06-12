@@ -42,6 +42,7 @@
             if (introTxt.length() > 100)
                 introTxt = introTxt.substring(0, 100) + "...";
 %>
+
             <div class="channel-content">
                 <a href="channel.jsp?userID=<%= userID %>">
                     <img class="profile" alt="" src="<%= userimgSrc %>" />

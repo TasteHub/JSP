@@ -3,6 +3,7 @@ package mvc.model;
 import java.sql.Date;
 
 public class VideoDTO {
+	
 	//video table
 	private int videoID;
 	private String title;
