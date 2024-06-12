@@ -21,7 +21,7 @@
 	
 	try{	
 		String sql = "INSERT INTO View(userID, videoID, viewDate) VALUES (?, ?, now()); "+
-					 "UPDATE Video SET cntView = (SELECT count(viewID) FROM View WHERE View.videoID = ?) WHERE videoID = ?;";
+					 "UPDATE Video SET cntView = (SELECT count(DISTINCT View.userID) FROM View WHERE View.videoID = ?) WHERE videoID = ?;";
 		pstmt_visit = conn_visit.prepareStatement(sql);
 		pstmt_visit.setInt(1, visitUserID);
 		pstmt_visit.setInt(2, visitVideoID);
