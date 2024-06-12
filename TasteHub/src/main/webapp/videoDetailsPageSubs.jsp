@@ -307,7 +307,7 @@
                 </div>
             </div>
             <div class="button-wrapper">
-            <a href="videoDetailsPage?videoID=<%= videoID %>">
+            <a href="videoDetailsPage.jsp?videoID=<%= videoID %>">
                 <button id="subscribeButton" class="subs-btn-clicked">구독중</button>
             </a>
                 <button id="likeButton" class="like-btn">
