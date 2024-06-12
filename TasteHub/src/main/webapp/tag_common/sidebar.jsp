@@ -44,7 +44,7 @@
 	<hr class="hr-sidebar">
 	
 	<div class="div-sidebar" style="background-color: <%=(st[length-1].equals("myPage.jsp") ? select_color:"white")%>">
-		<a class="btn-sidebar" href="myPage.jsp">
+		<a class="btn-sidebar" href="myVideoList.do">
 			<img alt="" src="img/Sidebar/btnMypage.png" width="27px" height="27px">
 			<p class="txt-sidebar">내 채널</p>
 		</a>

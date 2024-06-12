@@ -329,5 +329,45 @@ public class VideoDAO {
 			}
 		}
 	}
+	
+	// likelist.do
+		public ArrayList<VideoDTO> getMyVideoList(String input) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
 
+			String sql;
+			sql = "SELECT videoID, title, cntView, createDate, urlThumbnail FROM Video WHERE userID =" + input;
+			ArrayList<VideoDTO> list = new ArrayList<VideoDTO>();
+			try {
+				conn = DBConnection.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					VideoDTO video = new VideoDTO();
+					video.setVideoID(rs.getInt("videoID"));
+					video.setTitle(rs.getString("title"));
+					video.setCreateDate(rs.getDate("createDate"));
+					video.setUrlThumbnail(rs.getString("urlThumbnail"));
+					video.setCntView(rs.getInt("cntView"));
+
+					list.add(video);
+				}
+				return list;
+			} catch (Exception ex) {
+				System.out.println("getLikeVideoList() 예외발생: " + ex);
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception ex) {
+					throw new RuntimeException(ex.getMessage());
+				}
+			}
+			return null;
+		}
 }
