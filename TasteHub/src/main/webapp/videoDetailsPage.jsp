@@ -299,6 +299,10 @@
             </div>
         </div>
     </div>
-
+<%
+	if(conn!=null){
+		conn.close();
+	}
+%>
 </body>
 </html>
