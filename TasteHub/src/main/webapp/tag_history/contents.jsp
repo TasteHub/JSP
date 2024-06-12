@@ -14,14 +14,12 @@ if (query == null)
 	query = "";
 %>
 <form class="contents-main" action="history.do" method="post">
-	<%@ include file="../process/connect_DB.jsp"%>
 	<h2 style="width: 100%; min-width: 140px;">방문 기록</h2>
 	<div class="group">
 		<img alt="" src="img/Header/btnSearch.png" class="icon"> 
 		<input name="searchTxt" placeholder="방문 기록 검색" autocomplete="off" type="search" class="input" value=<%=query%>>
 	</div>
 	<%
-	SimpleDateFormat date = new SimpleDateFormat("M월 d일");
 	String dateFm, dateFm_pre = "init";
 
 	List videoList = (List) request.getAttribute("videolist");
@@ -37,7 +35,7 @@ if (query == null)
 		if (detail.length() > 100)
 			detail = detail.substring(0, 100) + "...";
 
-		dateFm = date.format(viewDate);
+		dateFm = viewDate.toString().substring(0, 10);
 		if (!dateFm_pre.equals(dateFm) && !dateFm_pre.equals("init")) {
 	%>
 	</div>

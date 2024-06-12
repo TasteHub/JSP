@@ -9,7 +9,6 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class DBConnection {
-	
 	public static Connection getConnection() throws NamingException {
 		Connection conn = null;
 		try {
@@ -18,7 +17,6 @@ public class DBConnection {
 			conn = ds.getConnection();
 			conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 		} catch (SQLException e) {
-			System.out.println("커넥션 연결 실패");
 			System.out.println(e.getMessage());
 		}
 		return conn;
