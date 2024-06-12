@@ -48,6 +48,7 @@
 	</div>
 	<hr class="hr-sidebar">
 	
+	
 	<p class="subText-sidebar">구독</p>
 	<%
 	for(int i = 0; i < 9; i++){

@@ -1,50 +1,82 @@
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Calendar" %>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="mvc.model.VideoDTO" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <link href="css/subscribe/contents_channel.css?after" rel="stylesheet" type="text/css">
-
+<form class="contents-main" action="./subscribe.do" method="post">
+<style>
+	.noSub-contents{
+		display: flex;
+		flex-direction: column;
+		width: 70%;
+		height: 600px;
+		align-items: center;
+		justify-content: center;
+		.img-noSub{
+			width: 200px;
+			margin-bottom: 10px;
+		}
+		
+		.text-noSub{
+			text-align: center;
+			*{
+				color: black;
+				margin: 5px;
+			}
+		}
+</style>
 <%
-    String userName = "이름";  
-    String introduce = "자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개 자기소개";
     String bellimgSrc = "img/VideoDetail/bell_icon.png";
     String userimgSrc = "img/Header/profileImg.jpg";
-%>
 
-<div class="contents-main">
-    <% for (int i = 0; i < 10; i++) { %>  
-        <div class="content-contents_list">
+    List<VideoDTO> subsChannelList = (List<VideoDTO>) request.getAttribute("subsChannelList");
+    int i = 0;
+    if (subsChannelList != null) {
+        for (i = 0; i < subsChannelList.size(); i++) {
+            VideoDTO video = subsChannelList.get(i);
+            String userID = video.getTitle(); 
+            String urlUserImg = video.getUrlUserImg();
+            String userName = video.getUserName();
+            String email = video.getEmail();
+            String introTxt = video.getIntroTxt();
+                
+            if (introTxt.length() > 100)
+                introTxt = introTxt.substring(0, 100) + "...";
+%>
             <div class="channel-content">
-                <a href="channel.jsp">
+                <a href="channel.jsp?userID=<%= userID %>">
                     <img class="profile" alt="" src="<%= userimgSrc %>" />
                 </a>
                 <div class="text-channel">
                     <div class="name-channel">
-                        <a href="channel.jsp">
+                        <a href="channel.jsp?userID=<%= userID %>">
                             <p class="user-name"><%= userName %></p>
                         </a>
                         <div class="subs-btn">
-                            <button id="subscribeButton" class="subs-btn"><img src="<%= bellimgSrc %>" alt="Bell Icon" style="width: 20px; height: 20px; margin-right: 5px;"> 구독중</button>
+                            <button type="button" class="subs-btn">
+                                <img src="<%= bellimgSrc %>" alt="Bell Icon" style="width: 20px; height: 20px; margin-right: 5px;"> 구독중
+                            </button>
                         </div>
                     </div>
-                    <p class="etc-text">@abcde · 구독자 100.0만명</p>
-                    <p class="intro-text"><%= introduce %></p>
+                    <p class="etc-text"><%= email %></p>
+                    <p class="intro-text"><%= introTxt %></p>
                 </div>
             </div>
-        </div>
-    <% } %>  
-</div>
+<%
+        }
+    }
+%>
 
-<script>
-    document.querySelectorAll('.subs-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            if (this.classList.contains('subs-btn-clicked')) {
-                this.classList.remove('subs-btn-clicked');
-                this.innerHTML = '<img src="<%= bellimgSrc %>" alt="Bell Icon" style="width: 20px; height: 20px; margin-right: 5px;"> 구독중';
-            } else {
-                this.classList.add('subs-btn-clicked');
-                this.innerHTML = '구독';
-            }
-        });
-    });
-</script>
+<% 
+    if (i == 0) {
+%>
+    <div class="noSub-contents">
+        <img class="img-noSub" alt="" src="img/Subscribe/noSubImg.png">
+        <div class="text-noSub">
+            <h2>구독한 채널이 없습니다.</h2>
+            <p>관심 있는 채널을 구독해보세요!</p>
+        </div>
+    </div>
+<%
+    }
+%>
+</form>

@@ -14,6 +14,7 @@ public class VideoDTO {
 	private long cntView;
 	private long cntLike;
 	
+	
 	//user table
 	private int userID;
 	private String userName;

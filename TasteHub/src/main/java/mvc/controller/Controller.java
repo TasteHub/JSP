@@ -69,6 +69,10 @@ public class Controller extends HttpServlet {
 			requestDelLikeVideo(request, id);
 			RequestDispatcher rd = request.getRequestDispatcher("/likeList.do");
 			rd.forward(request, response);
+		} else if(command.equals("/subscribe.do")) {//like 삭제
+			subscribeChannel(request, id);
+			RequestDispatcher rd = request.getRequestDispatcher("./subscribe_all.jsp");
+			rd.forward(request, response);
 		}
 		else {
 			RequestDispatcher rd = request.getRequestDispatcher("./errNoPage");;
@@ -129,12 +133,21 @@ public class Controller extends HttpServlet {
 		request.setAttribute("videolist", videolist);
 		request.setAttribute("query", searchTxt);
 	}
+	
 	public void requestDelLikeVideo(HttpServletRequest request, String userID) {
 		VideoDAO dao = VideoDAO.getInstance();
 		
 		String videoID = request.getParameter("videoID");
 		dao.delLikeList(userID, videoID);
 
+	}
+	public void subscribeChannel(HttpServletRequest request, String id) {
+		VideoDAO dao = VideoDAO.getInstance();
+		ArrayList<VideoDTO> videolist = new ArrayList<VideoDTO>();
+		
+		videolist = dao.subsChannelList(id);
+		
+		request.setAttribute("videolist", videolist);
 	}
 
 }
