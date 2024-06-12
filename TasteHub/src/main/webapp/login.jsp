@@ -19,9 +19,11 @@
 
  	<div class="i-login">
 	    <div class="homeBtn-login">
+	   
 	        <img alt="" src="img/Header/btnLogo.png" class="homeBtn-img">
 	        <span>TasteHub</span>
 	    </div>
+	    
 	    <p class="word-login">Login
 		<form action="process/loginHandler.jsp" method="post">
         <div class="input-login">
@@ -33,6 +35,13 @@
         </div>
         <input type="submit" class="login-btn" value="로그인">
     	</form>
+    	
+        <%
+            String errorMessage = request.getParameter("error");
+            if (errorMessage != null && !errorMessage.isEmpty()) {
+        %>
+        <p style="color: red;"><%= errorMessage %></p>
+        <% } %>
     	<div class="go-join">
 		    <p>아직 계정이 없으신가요?
 		    <a href="join.jsp" class="go-join-link">

@@ -33,7 +33,7 @@ try {
         
         response.sendRedirect("../home.do");
     } else {
-        response.sendRedirect("../login.jsp");
+    	response.sendRedirect("../login.jsp?error=존재하지 않는 회원 정보입니다.");
     }
 } catch (SQLException ex) {
     out.println("SQLException: " + ex.getMessage());

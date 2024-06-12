@@ -28,9 +28,11 @@
     Statement stmt_m = null;
     String userName_m = "", urlUserImg_m = "", urlBackImg_m ="";
     int cntSub_m = 0; 
+    String introTxt_m = null;
+    String email = null;
     
     try{    
-        String sql_m = "SELECT userName, cntSub, urlUserImg, urlBackImg FROM User WHERE userID = " + visitingUserID;
+        String sql_m = "SELECT userName, cntSub, urlUserImg, urlBackImg, email, introTxt FROM User WHERE userID = " + visitingUserID;
         stmt_m = conn_m.prepareStatement(sql_m);
         rs_m = stmt_m.executeQuery(sql_m);
         rs_m.next();
@@ -39,6 +41,9 @@
         cntSub_m = rs_m.getInt("cntSub");
         urlUserImg_m = rs_m.getString("urlUserImg");
         urlBackImg_m = rs_m.getString("urlBackImg");
+        introTxt_m = rs_m.getString("introTxt");
+        email = rs_m.getString("email");
+
 
         if(urlUserImg_m == null)
             urlUserImg_m = "img/Header/userIcon.png";
@@ -94,6 +99,11 @@
             margin-top: -35px;
         }
         
+        .introduce-detail {
+        	font-size: 14px;
+        	color: black;
+        }
+        
         .profile {
             display: flex;
             flex-direction: column;
@@ -120,7 +130,7 @@
             cursor: pointer;
             transition: width 0.3s;
             margin-right: 20px;
-            margin-top: 45px;
+            margin-top: 25px;
             width: 100px;
             background-color: #e9ecef;
             color: black;
@@ -160,7 +170,8 @@
     </div>
     <div class="profile" style="margin-left: 20px;;">
         <p class="user-detail"><%= userName_m %><br></p>
-        <p class="etc-detail">구독자 <%= cntSub_m %>명 · 동영상 500개</p>
+        <p class="etc-detail"><%= email %> · 구독자 <%= cntSub_m %>명</p>
+        <pre class="introduce-detail"><%=introTxt_m %></pre>
         <button id="subscribeButton" class="subs-btn">
             <img src="<%= bellimgSrc %>" alt="Bell Icon" style="width: 20px; height: 20px; margin-right: 5px;"> 구독중
         </button>
