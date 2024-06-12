@@ -301,7 +301,9 @@ public class VideoDAO {
 		}
 		return null;
 	}
-
+	
+	
+    
 	// deleteLike.do
 	public void delLikeList(String userID, String videoID) {
 		Connection conn = null;
@@ -329,5 +331,45 @@ public class VideoDAO {
 			}
 		}
 	}
+	
+	public ArrayList<VideoDTO> subsChannelList(String userID) {
+	    Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    ArrayList<VideoDTO> subsChannelList = new ArrayList<>();
+
+	    try {
+	        conn = DBConnection.getConnection();
+	        String sql = "SELECT userSubID, userName, urlUserImg, email, introTxt FROM Subscribe as s, User as u WHERE userSubID = u.userID and s.userID = ?;";
+	        pstmt = conn.prepareStatement(sql);
+	        pstmt.setString(1, userID);
+	        rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            VideoDTO video = new VideoDTO();
+	            video.setUserID(rs.getInt("userID"));
+	            video.setUrlUserImg(rs.getString("urlUserImg"));
+	            video.setUserName(rs.getString("userName"));
+	            video.setEmail(rs.getString("email"));
+	            video.setIntroTxt(rs.getString("introTxt"));
+	            subsChannelList.add(video);
+	        }
+	    } catch (Exception ex) {
+	        System.out.println("subsChannelList() 예외발생: " + ex);
+	        
+	    } finally {
+	        try {
+	            if (rs != null)
+	                rs.close();
+	            if (pstmt != null)
+	                pstmt.close();
+	            if (conn != null)
+	                conn.close();
+	        } catch (Exception ex) {
+	            throw new RuntimeException(ex.getMessage());
+	        }
+	    }
+	    return subsChannelList;
+	}
+
 
 }

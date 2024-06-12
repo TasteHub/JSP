@@ -62,7 +62,7 @@
 	<%
 	}
 	%>
-	<a class="btn-sidebar" href="subscribe_all.jsp" style="border-radius: 10px; margin-bottom: 5px; margin-right: 7px">
+	<a class="btn-sidebar" href="subscribe.do" style="border-radius: 10px; margin-bottom: 5px; margin-right: 7px">
 		<img alt="" src="img/Subscribe/btnList.png" width="27px" height="27px">
 		<p class="txt-sidebar">모든 구독</p>
 	</a>

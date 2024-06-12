@@ -18,6 +18,8 @@ public class VideoDTO {
 	private int userID;
 	private String userName;
 	private String urlUserImg;
+	private String email;
+	private String introTxt;
 	
 	public VideoDTO() {
 		super();
@@ -97,5 +99,17 @@ public class VideoDTO {
 	}
 	public void setUrlUserImg(String urlUserImg) {
 		this.urlUserImg = urlUserImg;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getIntroTxt() {
+		return introTxt;
+	}
+	public void setIntroTxt(String introTxt) {
+		this.introTxt = introTxt;
 	}
 }
