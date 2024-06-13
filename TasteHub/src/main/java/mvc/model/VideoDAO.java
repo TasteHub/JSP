@@ -184,10 +184,10 @@ public class VideoDAO {
 		}
 
 		String sql;
-		sql = "SELECT WV.userID, WV.videoID, urlThumbnail, title, userName, cntView, createDate, detail, viewDate "
+		sql = "SELECT WV.userID, WV.videoID, urlThumbnail, title, userName, cntView, createDate, detail, MAX(viewDate) as date "
 				+ "FROM ( SELECT viewDate, V.videoID, V.userID, title, urlThumbnail, cntView, createDate, detail "
 				+ "FROM View as W, Video as V WHERE W.userID = " + input + " AND V.videoID = W.videoID " + sql_search
-				+ ") as WV, User as U WHERE U.userID = WV.userID GROUP BY videoID ORDER BY UNIX_TIMESTAMP(viewDate) DESC";
+				+ ") as WV, User as U WHERE U.userID = WV.userID GROUP BY videoID ORDER BY UNIX_TIMESTAMP(date) DESC;";
 		ArrayList<VideoDTO> list = new ArrayList<VideoDTO>();
 		try {
 			conn = DBConnection.getConnection();
@@ -201,7 +201,7 @@ public class VideoDAO {
 				video.setCreateDate(rs.getDate("createDate"));
 				video.setUrlThumbnail(rs.getString("urlThumbnail"));
 				video.setCntView(rs.getInt("cntView"));
-				video.setViewDate(rs.getDate("viewDate"));
+				video.setViewDate(rs.getDate("date"));
 
 				video.setUserID(rs.getInt("userID"));
 				video.setUserName(rs.getString("userName"));

@@ -75,6 +75,6 @@
 			pstmt.close();
 		if(conn!=null)
 			conn.close();
-		response.sendRedirect("../myPage.jsp");
+		response.sendRedirect("../myVideoList.do");
 	}
 %>
