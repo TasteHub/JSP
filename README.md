@@ -26,9 +26,9 @@
 | <a href="https://github.com/ohige01"> 최선규 </a> | **Front & Server**<br>- 헤더, 사이드바&emsp;&emsp; - 메인페이지 &emsp;&emsp; - 구독 동영상 페이지<br>- 내 채널 페이지&emsp;&emsp;- 방문기록 페이지&emsp;&emsp;- 좋아요한 동영상 페이지<br>- 검색 후 페이지&emsp;&emsp;- 동영상 제작 페이지&emsp;&emsp;- 오류페이지<br><br>**etc**<br>- RDS 설정&emsp;&emsp;- S3 bucket 설정&emsp;&emsp;- Connection pool 설정|
 | <a href="https://github.com/kimgabin321"> 김가빈 </a> |**Front & Server**<br>- 채널 상세 페이지&emsp;&emsp;- 비디오 상세 페이지&emsp;&emsp;- 구독 채널 관리 페이지<br>- 로그인,회원가입 페이지<br><br>**etc**<br>- 세션 설정|
 
-
 <br><br><br>
-## <ERD>
+
+## <ERD설계>
 ![image](https://github.com/TasteHub/JSP/assets/115544538/13bc32df-c281-4f5c-9950-f8b8299a0eb0)
 <br><br>
 
