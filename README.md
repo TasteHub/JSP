@@ -36,8 +36,3 @@
 ![image](https://github.com/TasteHub/JSP/assets/115544538/1d92cac5-02ce-4d29-9e8e-268d32975909)
 <br><br>
 
-## <시연영상>
-<br>
-
-[![Video Label](http://img.youtube.com/vi/08TWqFEh3D8/0.jpg)](https://youtu.be/08TWqFEh3D8)
-<br><br>
