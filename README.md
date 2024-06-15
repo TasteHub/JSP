@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TasteHub | 레시피 모음 웹사이트
 ![image](https://github.com/TasteHub/JSP/assets/115544538/45691a27-0baf-43f1-8d51-f295e9427426)
 
@@ -36,3 +37,9 @@
 ![image](https://github.com/TasteHub/JSP/assets/115544538/1d92cac5-02ce-4d29-9e8e-268d32975909)
 <br><br>
 
+=======
+# JSP
+<p>ERD 설계</p>
+
+![image](https://github.com/TasteHub/JSP/assets/115544538/13bc32df-c281-4f5c-9950-f8b8299a0eb0)
+>>>>>>> refs/remotes/origin/develop

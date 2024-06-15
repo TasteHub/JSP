@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource name = "jdbc/mysql"
+			auth="Container"
+			driverClassName="com.mysql.cj.jdbc.Driver"
+			type="javax.sql.DataSource"
+			url = "jdbc:mysql://tempdb.c5aukk04odjh.ap-northeast-2.rds.amazonaws.com:3306/tasteHub?allowMultiQueries=true"
+			username = "root"
+			password = "chltjsrb"
+			maxActive="20"
+			minIdle="10"
+			maxWait="10000"
+			closeMethod="close"	
+	/>
+</Context>

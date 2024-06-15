@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page errorPage="errInvalidPage.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
 <title>TasteHub</title>
 <link rel="shortcut icon" href="#"/>
 <style type="text/css">

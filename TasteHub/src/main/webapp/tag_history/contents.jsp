@@ -1,57 +1,95 @@
+<%@ page import="java.util.List"%>
+<%@ page import="mvc.model.VideoDTO"%>
+<%@page import="java.sql.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<link href="css/history/contents.css?after" rel="stylesheet" type="text/css">
+	pageEncoding="utf-8"%>
+<link href="css/history/contents.css?after" rel="stylesheet"
+	type="text/css">
 
 <%
-	String exp = "영상설명 최대치 채우기 영상설명 최대치 채우기 영상설명 최대치 채우기 영상설명 최대치 채우기 영상설명 최대치 채우기 영상설명 최대치 채우기 영상설명 최대치 채우기 ";
-	String title = "영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 ";
-	Calendar day = Calendar.getInstance();
-	SimpleDateFormat date = new SimpleDateFormat("M월 d일");
-	String dateFm;
+String query = request.getParameter("searchTxt");
+if (query == null)
+	query = "";
 %>
-<div class="contents-main">
+<form class="contents-main" action="history.do" method="post">
 	<h2 style="width: 100%; min-width: 140px;">방문 기록</h2>
-<%
-	for(int j = 0; j < 10; j++){
-		day.add(Calendar.DATE, -1);
-		dateFm = date.format(day.getTime());
-%>
+	<div class="group">
+		<img alt="" src="img/Header/btnSearch.png" class="icon"> 
+		<input name="searchTxt" placeholder="방문 기록 검색" autocomplete="off" type="search" class="input" value=<%=query%>>
+	</div>
+	<%
+	String dateFm, dateFm_pre = "init";
+
+	List videoList = (List) request.getAttribute("videolist");
+	int i = 0;
+	for (i = 0; i < videoList.size(); i++) {
+		VideoDTO video = (VideoDTO) videoList.get(i);
+		String title = video.getTitle();
+		String detail = video.getDetail();
+		Date viewDate = video.getViewDate();
+
+		if (title.length() > 30)
+			title = title.substring(0, 30) + "...";
+		if (detail.length() > 100)
+			detail = detail.substring(0, 100) + "...";
+
+		dateFm = viewDate.toString().substring(0, 10);
+		if (!dateFm_pre.equals(dateFm) && !dateFm_pre.equals("init")) {
+	%>
+	</div>
+	<%
+	}
+	if (!dateFm_pre.equals(dateFm)) {
+	dateFm_pre = dateFm;
+	%>
 	<div class="oneday-contents">
 		<div class="date-content">
-			<p class="text-date"><%=dateFm %></p>
+			<p class="text-date"><%=dateFm%></p>
 		</div>
-	<%
-		for(int i = 0; i<10; i++){
-		if(exp.length()>40)
-			exp = exp.substring(0,40) + "...";
-		if(title.length()>20)
-			title = title.substring(0,20) + "...";
-	%>
-		<a class="content-contents_list" href="#">
+		<%
+		}
+		%>
+		<div class="content-contents_list">
 			<div class="video-content">
-				<div class="thumbnail-video" style="background-image: url(''); background-color: gray;"></div>
+				<a href="videoDetailsPage.jsp?videoID=<%=video.getVideoID()%>">
+					<div class="thumbnail-video"
+						style="background-image: url('<%=video.getUrlThumbnail()%>'); background-color: black;"></div>
+				</a>
 				<div class="text-video">
 					<div class="title-video">
-						<p class="title-text"><%= title %></p>
-						<div class="del-btn">
-							<img alt="" src="img/History/btnDeny.png" width="15px" height="">
-						</div>
+						<a href="videoDetailsPage.jsp?videoID=<%=video.getVideoID()%>">
+							<p class="title-text"><%=title%></p>
+						</a> <a class="del-btn"
+							href="delHistory.do?videoID=<%=video.getVideoID()%>"> <img
+							alt="" src="img/History/btnDeny.png" width="15px" height="">
+						</a>
 					</div>
 					<div class="detail-text">
-						<p class="user-text">닉네임</p>
-						<p class="etc-text"> · 000회 · 2개월 전</p>
+						<a href="channel.jsp?userID=<%=video.getUserID()%>">
+							<p class="user-text"><%=video.getUserName()%></p>
+						</a>
+						<p class="etc-text"> · <%=video.getCntView()%>회 · <%=video.getCreateDate()%></p>
 					</div>
-					<p class="exp-text"><%= exp %> 
+					<p class="exp-text"><%=detail%>
 				</div>
 			</div>
-		</a>
-	<%	
+		</div>
+		<%
 		}
-	%>	
-	</div>
-<%
-	} 
-%>
-</div>
+		if (i == 0) {
+		%>
+		<div class="noResult-contents">
+			<img class="img-noResult" alt="" src="./img/Search/noresIcon.png">
+			<div class="text-noResult">
+				<p class="query-text">'<%=request.getParameter("query")%>'</p>
+				<p class="info-text">에 대한 검색 결과가 없습니다.</p>
+			</div>
+			<p class="etc-noResult">비슷한 다른 검색어를 입력해보세요.</p>
+		</div>
+		<%
+		}
+		%>
+	
+</form>

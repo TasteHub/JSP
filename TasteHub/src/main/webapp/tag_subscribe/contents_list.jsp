@@ -1,38 +1,60 @@
+<%@ page import="java.util.List"%>
+<%@ page import="mvc.model.VideoDTO"%>
+<%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <link href="css/subscribe/contents_list.css?after" rel="stylesheet" type="text/css">
 
-<%
-	String exp = "영상설명 최대치 채우기 영상설명 최대치 채우기 영상설명 최대치 채우기 영상설명 최대치 채우기 영상설명 최대치 채우기 영상설명 최대치 채우기 영상설명 최대치 채우기 ";
-	String title = "영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 ";	
-%>
-<div class="contents-main">
+<form class="contents-main" action="./subscribe2.do" method="post">
 <%@ include file="./header_subscribe.jsp" %>
-
-<%
-for(int i = 0; i<10; i++){
-	if(exp.length()>60)
-		exp = exp.substring(0,60) + "...";
-	if(title.length()>30)
-		title = title.substring(0,30) + "...";
+<%	
+	List videoList = (List) request.getAttribute("videolist");
+	int i = 0;
+	for(i = 0; i < videoList.size(); i++){
+		VideoDTO video = (VideoDTO) videoList.get(i);
+		String title = video.getTitle();
+		String detail = video.getDetail();
+		if(title.length()>30)
+			title = title.substring(0,30) + "...";
+		if(detail.length()>100)
+			detail = detail.substring(0,100) + "...";
 %>
-	<a class="content-contents_list" href="#">
-		<div class="user-content">
-			<div class="userimg-user" style="background-image: url(''); background-color: gray;">
+	<div class="content-contents_list">
+		<a class="user-content" href="channel.jsp?userID=<%=video.getUserID()%>">
+			<div class="userimg-user" style="background-image: url('<%=video.getUrlUserImg()%>'); background-color: gray;">
 			</div>
-			<p class="name-user">닉네임</p>
-		</div>
+			<p class="name-user"><%= video.getUserName() %></p>
+		</a>
 		<div class="video-content">
-			<div class="thumbnail-video" style="background-image: url(''); background-color: gray;"></div>
+			<a href="videoDetailsPage.jsp?videoID=<%=video.getVideoID()%>">
+				<div class="thumbnail-video" style="background-image: url('<%=video.getUrlThumbnail()%>'); background-color: black;"></div>
+			</a>
 			<div class="text-video">
-				<p class="title-text"><%= title %></p>
+				<a href="videoDetailsPage.jsp?videoID=<%=video.getVideoID()%>">
+					<p class="title-text"><%= title %></p>
+				</a>
 				<div class="detail-text">
-					<p class="user-text">닉네임</p>
-					<p class="etc-text"> · 000회 · 2개월 전</p>
+					<a href="channel.jsp?userID=<%=video.getUserID()%>">
+						<p class="user-text"><%= video.getUserName() %></p>
+					</a>
+					<p class="etc-text"> · <%=video.getCntView() %>회 · <%=video.getCreateDate() %></p>
 				</div>
-				<p class="exp-text"><%= exp %> 
+				<p class="exp-text"><%= detail %> 
 			</div>
 		</div>
-	</a>
-<%}%>
-</div>
+	</div>
+<%
+	}
+	if(i == 0){
+%>
+	<div class="noSub-contents">
+		<img class="img-noSub" alt="" src="img/Subscribe/noSubImg.png">
+		<div class="text-noSub">
+			<h2>구독한 채널이 없습니다.</h2>
+			<p>관심 있는 채널을 구독해보세요!
+		</div>
+	</div>
+<%
+	}
+%>
+</form>

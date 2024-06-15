@@ -11,7 +11,6 @@
 	align-content: flex-start;
 
 	.content-contents_list{
-		padding: 10px 0px;
 		.video-content{
 			display: flex;
 			flex-direction: row;
@@ -23,6 +22,9 @@
 				min-height: 200px;
 				border-radius: 15px;
 				margin-right: 20px;
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
 			}
 			.etc-text{
 				color: gray;
@@ -49,17 +51,20 @@
 					display: flex;
 					flex-direction: row;
 					align-items: center;
-					margin-top: 10px;
+					margin-top: 7px;
+					margin-left: 0;
 					.userimg-detail{
 						width: 20px;
 						height: 20px;
 						border-radius: 10px;
+						background-size: cover;
+						background-position: center;
 					}
 					.user-text{
 						color: gray;
 						font-size: 12px;
 						font-weight: 500;
-						margin-left: 0;
+						margin-left: 5px;
 					}
 					.user-text:hover{
 						color: black;
@@ -67,15 +72,43 @@
 					}
 				}
 				.exp-text{
-					max-width: 80%;
-					min-width: 250px;
+					width: 80%;
+					min-width: 400px;
 					margin-top: 5px;
 					color: gray;
 					font-size: 12px;
 					font-weight: 500;
 				}
 			}
+		}	
+	}
+	.noResult-contents{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 70%;
+		width: 90%;
+		.text-noResult{
+			display: flex;
+			align-items: center;
+			*{
+				font-size: 16px;
+				font-weight: 600;
+			}
+			.query-text{
+				color: #FFAC45;
+				margin-right: 5px;
+			}
+			.info-text{
+				color: #767676;
+			}
 		}
-		
+		.etc-noResult{
+			margin: 0;
+			font-size: 14px;
+			font-weight: 500;
+			color: #C0C0C0;
+		}
 	}
 }

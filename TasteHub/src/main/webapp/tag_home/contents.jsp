@@ -1,29 +1,43 @@
+<%@ page import="java.util.List"%>
+<%@ page import="mvc.model.VideoDTO"%>
+<%@page import="java.sql.*"%>
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    
 <link href="css/home/contents.css?after" rel="stylesheet" type="text/css">
 
-<div class="contents-main">
+<form class="contents-main" action="./Home.do" method="post">
 <%
-	String title = "영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 영상제목 최대치 채우기 ";	
-%>
-<%
-	for(int i = 0; i<10; i++){
+	List videoList = (List) request.getAttribute("videolist");
+
+	for(int i = 0; i < videoList.size(); i++){
+		VideoDTO video = (VideoDTO) videoList.get(i);
+		String title = video.getTitle();
+
 		if(title.length()>20)
 			title = title.substring(0,20) + "...";
 %>
-	<a class="content-contents" href="#">
-		<div class="video-contents" style="background-image: url(''); background-color: gray;" ></div>
+	<div class="content-contents">
+		<a href="videoDetailsPage.jsp?videoID=<%=video.getVideoID()%>">
+			<div class="video-contents" style="background-image: url('<%=video.getUrlThumbnail()%>'); background-color: black" ></div>
+		</a>
 		<div class="detail-contents">
-			<div class="userimg-detail" style="background-image: url(''); background-color: gray;">
-			</div>
+			<a href="channel.jsp?userID=<%=video.getUserID()%>">
+				<div class="userimg-detail" style="background-image: url('<%=video.getUrlUserImg()%>'); background-color: gray;"></div>
+			</a>
 			<div class="text-detail">
-				<p class="title-detail"><%=title %></p>
-				<p class="user-detail">닉네임</p>
-				<p class="etc-detail">000회 · 2개월 전</p>
+				<a href="videoDetailsPage.jsp?videoID=<%=video.getVideoID()%>">
+					<p class="title-detail"><%=title %></p>
+				</a>
+				<a href="channel.jsp?userID=<%=video.getUserID()%>">
+					<p class="user-detail"><%=video.getUserName() %></p>
+				</a>
+				<p class="etc-detail"><%=video.getCntView() %>회 · <%=video.getCreateDate() %></p>
 			</div>
 		</div>
-	</a>
+	</div>
 <%
 	}
 %>
-</div>
+</form>
